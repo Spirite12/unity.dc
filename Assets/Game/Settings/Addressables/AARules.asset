@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b45ab2708beea904080cd4a9c0c1b944, type: 3}
+  m_Name: AARules
+  m_EditorClassIdentifier: 
+  singleList:
+  - {fileID: 2800000, guid: 2df2160b32628784daddf3d01d55138a, type: 3}
+  - {fileID: 102900000, guid: 3edd7fbb1b7eab8498429e5af6dd0abc, type: 3}
+  - {fileID: 102900000, guid: 1fd1586051dc52a48bf1d13eea2b51de, type: 3}
+  labelList:
+  - label: Animal
+    resList:
+    - {fileID: 102900000, guid: 257b9664dc3255243bed7c6803716352, type: 3}
+    - {fileID: 102900000, guid: 752773572af8f2841b3f9bd1360c81f6, type: 3}
+  folderList:
+  - number: 2
+    folderPath: {fileID: 102900000, guid: 34f8ad994ceeb454f887e12cc584e94d, type: 3}
+    excludePathList: []
