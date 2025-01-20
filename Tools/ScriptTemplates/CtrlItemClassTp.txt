@@ -1,0 +1,33 @@
+using DCFrame;
+
+public class #SCRIPTNAME#Ctrl : IUIItem {
+    public override void OnRelease() {
+        uiRef = null;
+    }
+
+    public override void OnHide() {
+//--ListenerFunc
+        RemoveListener();
+--//
+    }
+
+    public void Render(UIMono _uiMono) {
+        uiRef = (#SCRIPTNAME#Mono)_uiMono;
+//--ListenerFunc
+        RemoveListener();
+        AddListener();
+--//
+    }
+
+//--ListenerFunc
+    private void RemoveListener() {
+
+    }
+
+    private void AddListener() {
+
+    }
+--//
+
+    private #SCRIPTNAME#Mono uiRef;
+}
