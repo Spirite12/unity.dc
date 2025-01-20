@@ -14,5 +14,5 @@
   - Addressable ：AA包工具
 - 功能：
   - AA包新增资源配置、资源导入设置功能；
-    - 文档：[链接]()
+    - 文档：[链接](https://spirite12.github.io/post/frame/25.0115_addressable/)
   - 新增空文件夹检测、生成空文件夹占位文本代码；
