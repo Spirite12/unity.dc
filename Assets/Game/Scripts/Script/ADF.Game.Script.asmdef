@@ -1,0 +1,17 @@
+{
+    "name": "ADF.Game.Script",
+    "rootNamespace": "",
+    "references": [
+        "GUID:bd2314860cdedc34d8a3a13b8d5981dc",
+        "GUID:d62033d77ddcb03409c268879297c6ca"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
