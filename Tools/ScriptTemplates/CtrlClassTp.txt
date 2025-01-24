@@ -3,10 +3,9 @@ using DCFrame;
 
 public class #SCRIPTNAME#Ctrl : UIBaseSingleton<#SCRIPTNAME#Ctrl> {
 
-	protected override void OnShow(Action<Exception> callback) {
+	protected override void OnShow() {
 		uiRef = uiGameObject.GetComponent <#SCRIPTNAME#Mono>();
 		AddListener();
-		callback(null);
 	}
 
 	#region Basic Methods
