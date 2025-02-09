@@ -12,6 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b45ab2708beea904080cd4a9c0c1b944, type: 3}
   m_Name: AARules
   m_EditorClassIdentifier: 
-  singleList: []
+  singleList:
+    assetList: []
+    dirList: []
   labelList: []
-  folderList: []
+  folderList:
+  - folder: {fileID: 102900000, guid: e7d3e5b118ef5d64dba4b9e950ab16b7, type: 3}
+    number: 1
+    excludePathList: []

@@ -1,0 +1,36 @@
+using System;
+using DCFrame;
+
+public class #SCRIPTNAME#Ctrl : UIBaseSingleton<#SCRIPTNAME#Ctrl> {
+
+	protected override void OnShow() {
+		uiRef = uiGameObject.GetComponent <#SCRIPTNAME#Mono>();
+		AddListener();
+	}
+
+	#region Basic Methods
+	
+	private void AddListener() {
+	}
+
+	private void RemoveListener() {
+	}
+
+	protected override void OnRelease() {
+		uiRef = null;
+	}
+	protected override void OnHide() {
+		RemoveListener();
+	}
+	//--UIBaseType
+	public override UIBaseType SetUIBaseType() {
+		return UIBaseType.#UIBASETYPE#;
+	}
+	--//
+	protected override string AssetPath => "#SCRIPTPATH#";
+	protected override string AssetName => "#SCRIPTNAME#";
+
+	#endregion
+
+	private #SCRIPTNAME#Mono uiRef;
+}
