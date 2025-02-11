@@ -1,0 +1,18 @@
+{
+    "name": "ADF.Game.Ctrl",
+    "rootNamespace": "",
+    "references": [
+        "GUID:bd2314860cdedc34d8a3a13b8d5981dc",
+        "GUID:d62033d77ddcb03409c268879297c6ca",
+        "GUID:f51ebe6a0ceec4240a699833d6309b23"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
