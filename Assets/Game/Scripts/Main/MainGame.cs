@@ -4,6 +4,7 @@ namespace Game {
     public class MainGame : MonoSingleton<MainGame> {
         private void Awake() {
             RedTipConst.Initialization();
+            TextFilter.InitFilterFile();
         }
 
         private void Start() {
