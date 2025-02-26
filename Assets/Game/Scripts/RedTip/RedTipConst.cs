@@ -7,7 +7,7 @@ namespace Game {
         /// <summary>
         /// 游戏红点常量初始化调用
         /// </summary>
-        public static void Initialization() {
+        public static void Init() {
             foreach (var keyValue in redTipTreeDic) {
                 RedTipTree.redTipTreeDic.Add(keyValue.Key, keyValue.Value);
             }

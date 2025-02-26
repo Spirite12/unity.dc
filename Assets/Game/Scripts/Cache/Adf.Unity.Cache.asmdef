@@ -1,0 +1,16 @@
+{
+    "name": "Adf.Unity.Cache",
+    "rootNamespace": "",
+    "references": [
+        "GUID:d62033d77ddcb03409c268879297c6ca"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

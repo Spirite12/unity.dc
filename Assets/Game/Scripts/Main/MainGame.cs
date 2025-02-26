@@ -3,8 +3,8 @@ using DCFrame;
 namespace Game {
     public class MainGame : MonoSingleton<MainGame> {
         private void Awake() {
-            RedTipConst.Initialization();
-            TextFilter.InitFilterFile();
+            RedTipConst.Init();
+            CacheInit.Init();
         }
 
         private void Start() {
