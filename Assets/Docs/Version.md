@@ -39,3 +39,17 @@
     - 工程目录：Assets\DCFrame\Modules\RedTip
     - 支持：红点树管理、红点树查看器
     - 文档：[链接1](https://spirite12.github.io/post/24/24.05_redtip/)、[链接2](https://spirite12.github.io/post/24/24.06.07_redtip/)、[链接3](https://spirite12.github.io/post/24/24.06.29_redtip/)
+
+# 0.4.0
+
+- 功能
+  - 新增 TextFilter 屏蔽词库；
+    - 工程目录：Assets\DCFrame\Modules\TextFilter
+    - 支持：读取屏蔽词库文件、判断与过滤屏蔽词汇
+  - 新增 Cache 本地缓存功能；
+    - 工程目录：Assets\DCFrame\Modules\Cache
+    - 支持：根据账号类型读取、保存本地数据；
+    - 文档：[链接](https://spirite12.github.io/post/22/22.08_cache/)
+  - 新增动画优化脚本：AnimationOpEditor.cs；
+- 导入包：
+  - DoTween : 动效插件
