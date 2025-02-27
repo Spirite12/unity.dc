@@ -53,3 +53,4 @@
   - 新增动画优化脚本：AnimationOpEditor.cs；
 - 导入包：
   - DoTween : 动效插件
+  - Cinemachine ：虚拟相机
