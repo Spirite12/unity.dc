@@ -21,6 +21,10 @@ MonoBehaviour:
     m_Address: Assets/Game/Prefabs/Frame
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: 9159fe55d98b84c40868401e217f7386
+    m_Address: Assets/Game/Settings/AudioToolkit
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: ebb48f0a1d45c45479c2c7847ed37450, type: 2}
   m_SchemaSet:
