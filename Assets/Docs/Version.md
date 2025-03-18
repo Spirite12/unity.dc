@@ -50,7 +50,12 @@
     - 工程目录：Assets\DCFrame\Modules\Cache
     - 支持：根据账号类型读取、保存本地数据；
     - 文档：[链接](https://spirite12.github.io/post/22/22.08_cache/)
+  - 新增 Audio Toolkit 音效功能；
+    - 工程目录：Assets\Game\Settings\AudioToolkit
+    - 支持：音效管理、音效生成
+    - 文档：[链接](https://spirite12.github.io/post/25/25.02_AudioToolkit/)
   - 新增动画优化脚本：AnimationOpEditor.cs；
 - 导入包：
   - DoTween : 动效插件
   - Cinemachine ：虚拟相机
+  - AudioToolkit ：音效插件
