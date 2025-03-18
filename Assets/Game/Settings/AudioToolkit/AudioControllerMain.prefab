@@ -1,0 +1,144 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1423786132756107722
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1423786132756107701}
+  - component: {fileID: 228123508339554320}
+  m_Layer: 0
+  m_Name: AudioControllerMain
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1423786132756107701
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1423786132756107722}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &228123508339554320
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1423786132756107722}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 695103757, guid: 6c3fe97f7c7cf7840845cfee747751ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AudioObjectPrefab: {fileID: 7839586391523896414, guid: 143917332f02bed4093cdc30e116eca5, type: 3}
+  Persistent: 1
+  UnloadAudioClipsOnDestroy: 1
+  UsePooledAudioObjects: 1
+  PlayWithZeroVolume: 0
+  EqualPowerCrossfade: 0
+  audioChannels:
+  - settings:
+      crossfadeTime_In: 0
+      crossfadeTime_Out: 0
+      loopPlaylist: 0
+      shufflePlaylist: 0
+      crossfadePlaylist: 0
+      delayBetweenPlaylistTracks: 1
+  - settings:
+      crossfadeTime_In: 0
+      crossfadeTime_Out: 0
+      loopPlaylist: 0
+      shufflePlaylist: 0
+      crossfadePlaylist: 0
+      delayBetweenPlaylistTracks: 1
+  - settings:
+      crossfadeTime_In: 0
+      crossfadeTime_Out: 0
+      loopPlaylist: 0
+      shufflePlaylist: 0
+      crossfadePlaylist: 0
+      delayBetweenPlaylistTracks: 1
+  - settings:
+      crossfadeTime_In: 0
+      crossfadeTime_Out: 0
+      loopPlaylist: 0
+      shufflePlaylist: 0
+      crossfadePlaylist: 0
+      delayBetweenPlaylistTracks: 1
+  - settings:
+      crossfadeTime_In: 0
+      crossfadeTime_Out: 0
+      loopPlaylist: 0
+      shufflePlaylist: 0
+      crossfadePlaylist: 0
+      delayBetweenPlaylistTracks: 1
+  - settings:
+      crossfadeTime_In: 0
+      crossfadeTime_Out: 0
+      loopPlaylist: 0
+      shufflePlaylist: 0
+      crossfadePlaylist: 0
+      delayBetweenPlaylistTracks: 1
+  - settings:
+      crossfadeTime_In: 0
+      crossfadeTime_Out: 0
+      loopPlaylist: 0
+      shufflePlaylist: 0
+      crossfadePlaylist: 0
+      delayBetweenPlaylistTracks: 1
+  musicCrossFadeTime: 0
+  ambienceSoundCrossFadeTime: 0
+  specifyCrossFadeInAndOutSeperately: 0
+  _musicCrossFadeTime_In: 0
+  _musicCrossFadeTime_Out: -999
+  _ambienceSoundCrossFadeTime_In: 0
+  _ambienceSoundCrossFadeTime_Out: 0
+  loopPlaylist: 0
+  shufflePlaylist: 0
+  crossfadePlaylist: 0
+  delayBetweenPlaylistTracks: 1
+  AudioCategories:
+  - Name: System
+    _parentCategoryName: 
+    AudioObjectPrefab: {fileID: 0}
+    AudioItems: []
+    _volume: 1
+    audioMixerGroup: {fileID: 0}
+  - Name: Music
+    _parentCategoryName: 
+    AudioObjectPrefab: {fileID: 0}
+    AudioItems: []
+    _volume: 1
+    audioMixerGroup: {fileID: 0}
+  - Name: Sound
+    _parentCategoryName: 
+    AudioObjectPrefab: {fileID: 0}
+    AudioItems: []
+    _volume: 1
+    audioMixerGroup: {fileID: 0}
+  playlists:
+  - name: Default
+    playlistItems: []
+  _isAdditionalAudioController: 0
+  _audioDisabled: 0
+  _volume: 1
+  _currentInspectorSelection:
+    currentCategoryIndex: 1
+    currentItemIndex: -1
+    currentSubitemIndex: -1
+    currentPlaylistEntryIndex: 0
+    currentPlaylistIndex: 0

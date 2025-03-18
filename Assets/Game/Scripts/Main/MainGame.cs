@@ -1,4 +1,6 @@
+using Cysharp.Threading.Tasks;
 using DCFrame;
+using UnityEngine;
 
 namespace Game {
     public class MainGame : MonoSingleton<MainGame> {
@@ -7,9 +9,14 @@ namespace Game {
             CacheInit.Init();
         }
 
-        private void Start() {
+        private async UniTask Start() {
+            // 红点
             RedTipMain redTip = new RedTipMain(RedTipConst.RedTipMain, null);
             RedTipMgr.Init(redTip);
+            // 音乐
+            string path = Asset.GetPrefabPath("AudioToolkit/AudioControllerMain", Asset.EnumPrefixPath.Settings);
+            GameObject prefab = await Asset.LoadAsset(path) as GameObject;
+            Instantiate(prefab, transform);
         }
 
         protected override void OnDestroy() {
