@@ -76,3 +76,5 @@ crashlytics-build.properties
 **/Assets/Simple.meta
 **/.idea/
 **/Record/
+
+!Assets/Plugins/**/*.dll
