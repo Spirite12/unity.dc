@@ -53,7 +53,7 @@
   - 新增 Audio Toolkit 音效功能；
     - 工程目录：Assets\Game\Settings\AudioToolkit
     - 支持：音效管理、音效生成
-    - 文档：[链接](https://spirite12.github.io/post/25/25.02_AudioToolkit/)
+    - 文档：[链接](https://spirite12.github.io/post/25/25.02_audiotoolkit/)
   - 新增动画优化脚本：AnimationOpEditor.cs；
 - 导入包：
   - DoTween : 动效插件
