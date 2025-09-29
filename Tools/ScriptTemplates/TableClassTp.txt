@@ -1,29 +1,21 @@
-using System.Collections.Generic;
-using System.Globalization;
-using System.IO;
-using System.Linq;
-using System.Text;
-using CsvHelper;
-using CsvHelper.Configuration;
+using System;
 using DCFrame;
+using UnityEngine;
+using System.Collections.Generic;
 
 namespace Game {
     public class Table#SCRIPTNAME#Class {
         #SCRIPTFIELD#
     }
-    public class Table#SCRIPTNAME# : Singleton<Table#SCRIPTNAME#> {
+    public class Table#SCRIPTNAME# : TableBaseSingle<Table#SCRIPTNAME#> {
 
-        private List<Table#SCRIPTNAME#Class> LoadTableData() {
-            var config = new CsvConfiguration(CultureInfo.InvariantCulture) {
-                HasHeaderRecord = true,  // 是否有表头
-                IgnoreBlankLines = true,  // 忽略空行
-            };
-            using var reader = new StreamReader(CsvPath, Encoding.UTF8);
-            using var csv = new CsvReader(reader, config);
-            return csv.GetRecords<Table#SCRIPTNAME#Class>().ToList();
+#CONFIGMETHODSKEY#
+
+        public TableTest() {
+            #CONFIGDICINIT#
         }
 
-        private const string CsvPath = "Assets/Game/Table/#SCRIPTNAME#.csv";
-        private readonly Dictionary<string, Table#SCRIPTNAME#Class> cacheDic = new();
+        protected override string CsvPath => "Assets/Game/Table/#SCRIPTNAME#.csv";
+        #CONFIGDIC#
     }
 }
