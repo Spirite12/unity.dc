@@ -8,14 +8,23 @@ namespace Game {
         #SCRIPTFIELD#
     }
     public class Table#SCRIPTNAME# : TableBaseSingle<Table#SCRIPTNAME#> {
+#CONFIGMAX#
+        #region 自定义内容
+#CONFIGCUSTOM#
+        #endregion
+
+        #region 查表
 
 #CONFIGMETHODSKEY#
+
+        #endregion
 
         public TableTest() {
             #CONFIGDICINIT#
         }
 
         protected override string CsvPath => "Assets/Game/Table/#SCRIPTNAME#.csv";
+        private readonly Dictionary<string, Table#SCRIPTNAME#Class> cacheDic;
         #CONFIGDIC#
     }
 }
