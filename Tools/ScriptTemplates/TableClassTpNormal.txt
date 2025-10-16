@@ -3,11 +3,11 @@ using DCFrame;
 using UnityEngine;
 using System.Collections.Generic;
 
-namespace Game {
-    public class Table#SCRIPTNAME#Class {
+namespace Game.Table {
+    public class #SCRIPTNAME#Class {
         #SCRIPTFIELD#
     }
-    public class Table#SCRIPTNAME# : TableBaseSingle<Table#SCRIPTNAME#> {
+    public class #SCRIPTNAME# : TableBaseSingle<#SCRIPTNAME#> {
 #CONFIGMAX#
         #region 自定义内容
 #CONFIGCUSTOM#
@@ -19,12 +19,12 @@ namespace Game {
 
         #endregion
 
-        public TableTest() {
+        public #SCRIPTNAME#() {
             #CONFIGDICINIT#
         }
 
         protected override string CsvPath => "Assets/Game/Table/#SCRIPTNAME#.csv";
-        private readonly Dictionary<string, Table#SCRIPTNAME#Class> cacheDic;
+        private readonly Dictionary<string, #SCRIPTNAME#Class> cacheDic;
         #CONFIGDIC#
     }
 }
