@@ -4,7 +4,7 @@ using UnityEngine;
 using System.Collections.Generic;
 
 namespace Game.Table {
-    public class #SCRIPTNAME#Class {
+    public class #SCRIPTNAME##CLASSENDSIGN# {
         #SCRIPTFIELD#
     }
     public class #SCRIPTNAME# : TableBaseSingle<#SCRIPTNAME#> {
@@ -24,7 +24,7 @@ namespace Game.Table {
         }
 
         protected override string CsvPath => "Assets/Game/Table/#SCRIPTNAME#.csv";
-        private readonly Dictionary<string, #SCRIPTNAME#Class> cacheDic;
+        private readonly Dictionary<string, #SCRIPTNAME##CLASSENDSIGN#> cacheDic;
         #CONFIGDIC#
     }
 }
