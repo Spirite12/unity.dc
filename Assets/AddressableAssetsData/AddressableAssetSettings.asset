@@ -86,7 +86,8 @@ MonoBehaviour:
       m_InlineUsage: 0
     m_ProfileVersion: 1
   m_LabelTable:
-    m_LabelNames: []
+    m_LabelNames:
+    - Locale
   m_SchemaTemplates: []
   m_GroupTemplateObjects:
   - {fileID: 11400000, guid: 669b699fcdf01994ba2d1a38abf04c6a, type: 2}

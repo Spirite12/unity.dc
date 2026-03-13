@@ -16,7 +16,12 @@ MonoBehaviour:
   m_Data:
     m_SerializedData: []
   m_GUID: ddf2e5f194ff7274ca2212cc444d0d82
-  m_SerializeEntries: []
+  m_SerializeEntries:
+  - m_GUID: 53eeed254507057489633d19c0613b2f
+    m_Address: Chinese (Simplified) (zh-CN)
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale
   m_ReadOnly: 1
   m_Settings: {fileID: 11400000, guid: ebb48f0a1d45c45479c2c7847ed37450, type: 2}
   m_SchemaSet:

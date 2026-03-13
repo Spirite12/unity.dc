@@ -12,4 +12,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d2cac75d61888746abd8623b67e73c7, type: 3}
   m_Name: LocalizeRules
   m_EditorClassIdentifier: 
-  languagList: []
