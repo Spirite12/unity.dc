@@ -2,7 +2,8 @@
     "name": "ADF.Game.Mono",
     "rootNamespace": "",
     "references": [
-        "GUID:d62033d77ddcb03409c268879297c6ca"
+        "GUID:d62033d77ddcb03409c268879297c6ca",
+        "GUID:7f632aa2f693a8941a4bb0ec2e16a153"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

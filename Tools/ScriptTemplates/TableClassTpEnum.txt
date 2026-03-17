@@ -1,0 +1,10 @@
+using System;
+using DCFrame;
+using System.Collections.Generic;
+
+namespace Game.Table {
+    public class #SCRIPTNAME# : TableBaseSingle<#SCRIPTNAME#> {
+#CONFIGINFO#
+        protected override string CsvPath => "Assets/Game/Table/#SCRIPTNAME#.csv";
+    }
+}

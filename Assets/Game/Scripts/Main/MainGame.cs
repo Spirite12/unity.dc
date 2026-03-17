@@ -16,7 +16,7 @@ namespace Game {
             // 音乐
             string path = Asset.GetPrefabPath("AudioToolkit/AudioControllerMain", Asset.EnumPrefixPath.Settings);
             GameObject prefab = await Asset.LoadAsset(path) as GameObject;
-            Instantiate(prefab, transform);
+            Instantiate(prefab);
         }
 
         protected override void OnDestroy() {

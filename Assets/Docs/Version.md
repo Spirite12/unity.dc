@@ -59,3 +59,19 @@
   - DoTween : 动效插件
   - Cinemachine ：虚拟相机
   - AudioToolkit ：音效插件
+
+# 0.5.0
+
+功能：
+
+- 新增 Table 配置表功能；
+  - 工程目录：Assets\DCFrame\Modules\Table
+  - 配置目录：Assets\Game\Settings\Table
+  - 支持：CSV配表、表规则保存，表模版生成；
+  - 文档：[链接](https://spirite12.github.io/post/25.04_csvhelper/)
+- 新增 Localization 本地化功能；
+  - 导入包：Localization
+  - 工程目录：Assets\DCFrame\Modules\Localize
+  - 配置目录：Assets\Game\Settings\Localize
+  - 支持：文本本地化、资源本地化；
+  - 文档：[链接1](https://spirite12.github.io/post/25/25.05_localization/)、[链接2](https://spirite12.github.io/post/25/25.06_localization/)

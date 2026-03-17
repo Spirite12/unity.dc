@@ -1,0 +1,30 @@
+using System;
+using DCFrame;
+using UnityEngine;
+using System.Collections.Generic;
+
+namespace Game.Table {
+    public class #SCRIPTNAME##CLASSENDSIGN# {
+        #SCRIPTFIELD#
+    }
+    public class #SCRIPTNAME# : TableBaseSingle<#SCRIPTNAME#> {
+#CONFIGMAX#
+        #region 自定义内容
+#CONFIGCUSTOM#
+        #endregion
+
+        #region 查表
+
+#CONFIGMETHODSKEY#
+
+        #endregion
+
+        public #SCRIPTNAME#() {
+            #CONFIGDICINIT#
+        }
+
+        protected override string CsvPath => "Assets/Game/Table/#SCRIPTNAME#.csv";
+        private readonly Dictionary<string, #SCRIPTNAME##CLASSENDSIGN#> cacheDic;
+        #CONFIGDIC#
+    }
+}
