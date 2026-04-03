@@ -1,13 +1,31 @@
-# 工程目录总览
+# 工程目录与模块入口
 
-## 顶层结构
+用于快速定位工程目录、模块入口与读写边界。
 
-- `Assets/DCFrame/`：框架模块与少量工具代码。
-- `Assets/Game/`：业务脚本、配置、场景、预制体、表、本地化资源。
-- `Assets/Docs/`：版本、规范、记录文档，只读。
-- `Assets/Plugins/`：第三方插件目录，默认只做轻量说明与接入参考，不作为业务开发主战场。
+## 顶层目录
 
-## 主要业务入口
+- `Assets/DCFrame/`：框架模块与工具代码。
+- `Assets/Game/`：业务开发文件夹。
+- `Assets/Docs/`：版本、规范、记录等相关文档。
+- `Assets/Plugins/`：第三方插件目录。
+- `Assets/AddressableAssetsData`：Addressable 资源数据目录，默认不读、不改。
+
+## 读写边界
+
+以下标识用于说明目录权限：
+
+- ①：只读，不改。
+- ②：业务开发模式下，只可读。
+- ③：框架开发模式下，只可读。
+
+相关目录如下：
+
+- `Assets/Docs/`：②、③
+- `Assets/DCFrame/`：②
+- `Assets/Plugins/`：①
+- 任意 `Editor/` 目录：②
+
+## 业务入口
 
 - `Assets/Game/Scenes/Main.unity`：主场景。
 - `Assets/Game/Prefabs/Frame/`：运行时 UI / 框架预制体入口。
@@ -18,7 +36,7 @@
 - `Assets/Game/Table/`：CSV 配表目录。
 - `Assets/Game/Localize/`：本地化文本与资源数据目录。
 
-## 框架模块入口
+## 框架入口
 
 - `Assets/DCFrame/Modules/UIManager/`：UI 栈、层级、适配、预制体引用工具。
 - `Assets/DCFrame/Modules/Table/`：表读取基类、规则定义、科学计数法转换。
@@ -29,21 +47,14 @@
 - `Assets/DCFrame/Modules/TextFilter/`：屏蔽词过滤。
 - `Assets/DCFrame/Modules/RedTip/`：红点树底层实现。
 
-## 只读优先区
+## 插件目录边界
 
-- `Assets/Docs/`
-- `Assets/DCFrame/`
-- `Assets/Plugins/`
-- 任意 `Editor/` 目录
-
-## Plugins
-
-`Assets/Plugins/` 优先通过项目封装和示例使用插件，默认不做深度逐文件阅读，不作为业务开发主战场，也不对此目录下文件做修改；
+`Assets/Plugins/` 优先通过项目封装和示例接入，默认不做逐文件深入阅读，也不作为业务开发主战场；通常不直接修改该目录下文件。
 
 ### 当前插件目录
 
 - `Assets/Plugins/AudioToolkit/`
-  - 音效插件，项目接入入口在 `Assets/Game/Settings/AudioToolkit/`
+  - 音效插件，项目接入入口位于 `Assets/Game/Settings/AudioToolkit/`
 - `Assets/Plugins/CsvHelper/`
   - CSV 读取库，供 Table 模块使用
 - `Assets/Plugins/Demigiant/`
