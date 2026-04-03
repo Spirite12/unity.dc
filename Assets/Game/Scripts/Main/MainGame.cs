@@ -15,7 +15,7 @@ namespace Game {
             RedTipMgr.Init(redTip);
             // 音乐
             string path = Asset.GetPrefabPath("AudioToolkit/AudioControllerMain", Asset.PrefixPath.Settings);
-            GameObject prefab = await Asset.LoadAsset<GameObject>(path);
+            GameObject prefab = await LoadAsset<GameObject>(path);
             Instantiate(prefab);
         }
 
