@@ -1,47 +1,80 @@
-# Framework
+# 框架层说明
 
 ## 定位
 
-- `Assets/DCFrame/` 是框架层，默认只读；
-- 这里只记录框架能力、入口和使用边界，不把框架拆成多个 skill。
-- 业务开发优先在 `Assets/Game/` 扩展，通过现有框架入口接入功能。
+- `Assets/DCFrame/` 为框架层目录。
+- 本文档用于记录框架能力、主要入口与使用边界。
+- 业务开发优先在 `Assets/Game/` 扩展，并通过现有框架入口接入功能。
 
 ## 当前关注模块
+
+以下模块按文件夹命名字母顺序排列，便于对照检查。
 
 - `Addressable`
   - 目录：`Assets/DCFrame/Modules/Addressable/`
   - 配置：`Assets/Game/Settings/Addressables/AARules.asset`
   - 用途：Addressable 分组规则、自动标记、AA 打包。
+  - 使用提示：涉及资源分组、地址标记或打包规则时，优先先看对应配置资产。
 - `Cache`
   - 目录：`Assets/DCFrame/Modules/Cache/`
   - 用途：本地缓存读写、版本控制、按账号类型保存。
+  - 使用提示：涉及本地持久化或账号维度缓存时，优先沿现有缓存基类扩展。
 - `Event`
   - 目录：`Assets/DCFrame/Modules/Event/`
   - 项目事件入口：`Assets/Game/Scripts/Event/EventConst.cs`
   - 用途：统一声明和派发事件，当前最多支持 4 个参数。
+  - 使用提示：新增或修改事件时，业务开发优先从 `Assets/Game/Scripts/Event/EventConst.cs` 接入；框架层通用事件再查看 `Assets/DCFrame/Modules/Event/EventBase.cs`。
+- `Localize`
+  - 目录：`Assets/DCFrame/Modules/Localize/`
+  - 配置：`Assets/Game/Settings/Localize/`
+  - 用途：负责文本与资源本地化读取，文本来源统一接入 `table` 体系。
+  - 使用提示：涉及文本或资源本地化时，先检查本地化配置与现有读取入口。
+- `RedTip`
+  - 目录：`Assets/DCFrame/Modules/RedTip/`
+  - 项目入口：`Assets/Game/Scripts/RedTip/`
+  - 用途：负责红点树底层能力，项目侧在常量、树结构和实例映射中接入具体红点逻辑。
+  - 使用提示：新增红点逻辑时，优先从项目侧常量、树结构和入口映射开始接入。
+- `Singleton`
+  - 目录：`Assets/DCFrame/Modules/Singleton/`
+  - 用途：提供 `Singleton<T>` 与 `MonoSingleton<T>` 基类，供框架管理器和主入口对象复用。
+  - 使用提示：新增全局管理器或唯一运行实例时，先判断是否适合复用现有单例基类。
+- `Table`
+  - 目录：`Assets/DCFrame/Modules/Table/`
+  - 配置：`Assets/Game/Settings/Table/TableRules.asset`
+  - 用途：负责表读取基类、导表规则、生成代码与科学计数法处理。
+  - 使用提示：涉及配表或查表逻辑时，优先先看规则资产与生成结果，不直接绕过导表体系。
 - `TextFilter`
   - 目录：`Assets/DCFrame/Modules/TextFilter/`
-  - 配置：`Assets/Game/Settings/TextFilter/TextFilter.txt`
   - 用途：基于屏蔽词判断与替换。
+  - 配置：`Assets/Game/Settings/TextFilter/TextFilter.txt`
+  - 使用提示：涉及敏感词判断或替换时，优先先看现有屏蔽词配置文件。
+- `UIManager`
+  - 目录：`Assets/DCFrame/Modules/UIManager/`
+  - 配置：`Assets/Game/Settings/UIManager/`
+  - 用途：负责 UI 根节点、界面栈、层级排序、全屏与非全屏界面切换，以及多分辨率适配。
+  - 使用提示：新增界面或调整界面行为时，优先沿现有 UI 基类和管理器体系扩展。
 - `UniTask`
   - 插件目录：`Assets/Plugins/UniTask/`
   - 用途：项目主异步方案。
-  - 当前示例调用：
-    - `Assets/DCFrame/Modules/Localize/Localize.cs`
+  - 使用提示：涉及异步流程时，优先沿项目现有的 `UniTask` 使用方式保持一致。
+  - 参考位置：`Assets/DCFrame/Modules/Localize/Localize.cs`
 
-## 代码参考
+## 主入口脚本
 
-- `Assets/Game/Scripts/Main/MainGame.cs`
-- `Assets/Game/Scripts/Event/EventConst.cs`
-- `Assets/DCFrame/Modules/Localize/Localize.cs`
-- `Assets/DCFrame/Modules/UIManager/UIMgr.cs`
+- `Assets/DCFrame/Main/MainFrame.cs`：框架主入口脚本。
+- 负责承接框架级生命周期管理与核心能力接入。
+- 涉及框架初始化、运行时调度或统一清理时，优先从该脚本确认入口。
+
+## 高频工具目录
+
+- `Assets/DCFrame/Utility/`：高频工具目录，供业务层和框架层复用通用能力。
+- 当前主要包括字符串、文件、本地化、配表、时间等通用辅助能力。
+- 适合沉淀无业务状态、可跨模块复用的辅助逻辑；不适合放具体业务规则或模块专属流程。
 
 ## 使用规则
 
-- 开发前先检查对应模块在 `Assets/Game/Settings/` 下是否已有配置资产。
-- 优先用项目已有封装和示例，而不是直接进插件源码或框架底层改。
-- 事件常量放项目侧 `EventConst`，不要把项目事件直接塞进框架基类。
-- 继续沿用 `UniTask`，不要额外引入另一套异步框架。
-- 若需求能在业务层完成，不向 `DCFrame` 反向补新能力，除非以下情况：
-  - `Assets/DCFrame/Utility/` ：是工具文件夹，可添加同类脚本，新增函数；修改此处需告知开发者；
-  - `Assets/DCFrame/Modules/`：文件夹下除非有特别通用的代码需要添加，否则只读；修改此处需要先让开发者审核后，才能修改；
+- 开发前先检查对应模块在 `Assets/Game/Settings/` 下是否已有配置资产、规则或可复用示例。
+- 优先复用项目已有封装与示例，不直接修改插件源码或框架底层实现。
+- 业务需求优先在 `Assets/Game/` 实现，非必要不修改 `DCFrame`。
+- `Assets/DCFrame/Utility/`：可按现有方式补充同类工具；修改前需先告知开发者。
+- `Assets/DCFrame/Modules/`：默认只读；仅在需要沉淀通用能力时，且经开发者审核后，才允许修改。
