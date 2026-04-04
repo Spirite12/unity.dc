@@ -1,3 +1,4 @@
 ﻿Id,Name,IsTure
+Id,名称,是否真假
 1,测试表1,TRUE
 2,测试表2,FALSE
