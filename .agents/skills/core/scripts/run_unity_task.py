@@ -21,12 +21,12 @@ TASK_METHODS = {
 def parse_args() -> argparse.Namespace:
     """解析命令行参数。"""
     parser = argparse.ArgumentParser(
-        description="调用 Unity Editor 的 -executeMethod 执行导表或本地化资源生成。"
+        description="调用 Unity Editor 的 -executeMethod 执行导表或本地化相关入口。"
     )
     parser.add_argument(
         "task",
         choices=("table", "localize", "all", "init-localize"),
-        help="要执行的任务：table=一键导表，localize=本地化资源生成，all=依次执行两者，init-localize=初始化本地化目录。",
+        help="要执行的任务：table=一键导表，localize=本地化资源生成，all=依次执行导表与本地化资源生成，init-localize=按 LocalizeRules 的两个按钮顺序执行初始化。",
     )
     parser.add_argument(
         "--project-path",
@@ -52,18 +52,6 @@ def parse_args() -> argparse.Namespace:
         "--dry-run",
         action="store_true",
         help="仅打印最终命令，不实际启动 Unity。",
-    )
-    parser.add_argument(
-        "--locale",
-        action="append",
-        default=[],
-        help="初始化本地化目录时要创建的语言目录，可重复传入；默认创建 zh-CN。",
-    )
-    parser.add_argument(
-        "--asset-type",
-        action="append",
-        default=[],
-        help="初始化本地化目录时要创建的资源类型目录，可重复传入，如 Prefab、Sprite。",
     )
     return parser.parse_args()
 
@@ -164,42 +152,6 @@ def validate_localize_root(project_path: Path) -> None:
         )
 
 
-def init_localize_root(
-    project_path: Path,
-    locales: list[str],
-    asset_types: list[str],
-    dry_run: bool,
-) -> int:
-    """初始化本地化目录结构。"""
-    normalized_locales = [item.strip() for item in locales if item.strip()]
-    if not normalized_locales:
-        normalized_locales = ["zh-CN"]
-
-    normalized_asset_types = [item.strip() for item in asset_types if item.strip()]
-
-    localize_root = project_path / "Assets" / "Game" / "Localize"
-    target_dirs = [localize_root, localize_root / "Text", localize_root / "Text" / "Table"]
-    target_dirs.extend(localize_root / "Text" / locale for locale in normalized_locales)
-
-    for asset_type in normalized_asset_types:
-        asset_root = localize_root / asset_type
-        target_dirs.append(asset_root)
-        target_dirs.append(asset_root / "Table")
-        target_dirs.extend(asset_root / locale for locale in normalized_locales)
-
-    print("[run_unity_task] 执行任务: init-localize")
-    for path in target_dirs:
-        print(f"[run_unity_task] 目录: {path}")
-
-    if dry_run:
-        return 0
-
-    for path in target_dirs:
-        path.mkdir(parents=True, exist_ok=True)
-
-    return 0
-
-
 def run_task(
     task_name: str,
     unity_path: Path,
@@ -232,21 +184,16 @@ def main() -> int:
         print(f"项目目录不存在：{project_path}", file=sys.stderr)
         return 2
 
-    if args.task == "init-localize":
-        return init_localize_root(
-            project_path=project_path,
-            locales=args.locale,
-            asset_types=args.asset_type,
-            dry_run=args.dry_run,
-        )
-
     try:
         unity_path = resolve_unity_path(project_path, args.unity_path)
     except Exception as exc:  # noqa: BLE001
         print(str(exc), file=sys.stderr)
         return 2
 
-    tasks = ("table", "localize") if args.task == "all" else (args.task,)
+    if args.task in ("all", "init-localize"):
+        tasks = ("table", "localize")
+    else:
+        tasks = (args.task,)
     for task_name in tasks:
         try:
             exit_code = run_task(
