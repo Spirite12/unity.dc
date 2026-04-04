@@ -48,7 +48,7 @@
   - 目录：`Assets/DCFrame/Modules/TextFilter/`
   - 用途：基于屏蔽词判断与替换。
   - 配置：`Assets/Game/Settings/TextFilter/TextFilter_global.txt`、`Assets/Game/Settings/TextFilter/TextFilter_<locale>.txt`
-  - 使用提示：涉及敏感词判断查询时，请使用`TextFilter.txt` 查询；
+  - 使用提示：业务开发若需判断或替换敏感词，优先通过 `Assets/DCFrame/Modules/TextFilter/TextFilter.cs` 的现有接口接入；词库文本文件仅作为配置来源，不直接在业务代码中读取。
 - `UIManager`
   - 目录：`Assets/DCFrame/Modules/UIManager/`
   - 配置：`Assets/Game/Settings/UIManager/`
