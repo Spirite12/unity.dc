@@ -22,6 +22,26 @@ description: 用于阅读工程结构、编写和完善代码，以及在功能�
 
 - 文本统一从 `table` 表读取，并在对应的 `Localization` 下访问。
 
+## 完成定义
+
+- AI 完成范围：
+  - 已按工程当前实际目录与入口完成代码、规则或文档接入。
+  - 可自动执行的步骤已执行；若未执行，需明确说明阻塞原因与当前状态。
+- 开发者完成范围：
+  - 预制体拼装、Inspector 挂接、资源摆放、最终表现校验。
+  - 需要在 Unity 编辑器内手动确认的资源状态、组件引用与运行结果。
+- 交付判定：
+  - 相关改动已落到正确目录；
+  - 关键入口、规则与命名已接通；
+  - 自动化步骤已执行或已说明未执行原因；
+  - 人工收尾项已列明，且表述不含糊。
+
+## scripts 索引
+
+- Unity 自动化入口：`scripts/run_unity_task.py`
+  - 用途：通过 Unity 命令行执行导表与本地化资源生成，并可初始化 `Assets/Game/Localize/` 目录结构。
+  - 使用提示：涉及 `TableEditor.PackageConfig()`、`LocalizeEditor.CreateLocalizeAsset()` 或首次初始化 `Assets/Game/Localize/` 时，优先调用该脚本，而不是临时手拼 `Unity.exe -executeMethod ...` 或手动散着建目录。
+
 ## references 索引
 
 - 工程目录与模块入口：`references/project-map.md`
