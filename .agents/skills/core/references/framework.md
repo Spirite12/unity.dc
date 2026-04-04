@@ -6,9 +6,9 @@
 - 本文档用于记录框架能力、主要入口与使用边界。
 - 业务开发优先在 `Assets/Game/` 扩展，并通过现有框架入口接入功能。
 
-## 当前关注模块
+## 高频模块
 
-以下模块按文件夹命名字母顺序排列，便于对照检查。
+以下内容按文件夹命名字母顺序排列，记录当前业务开发最常用的模块；未列出的模块不代表不存在或不可用，必要时仍需按目录继续排查。
 
 - `Addressable`
   - 目录：`Assets/DCFrame/Modules/Addressable/`
@@ -21,9 +21,10 @@
   - 使用提示：涉及本地持久化或账号维度缓存时，优先沿现有缓存基类扩展。
 - `Event`
   - 目录：`Assets/DCFrame/Modules/Event/`
-  - 项目事件入口：`Assets/Game/Scripts/Event/EventConst.cs`
+  - 项目自定义事件入口：`Assets/Game/Scripts/Event/EventConst.cs`
+  - 框架内置事件入口：`Assets/DCFrame/Modules/Event/EventFrame.cs`
   - 用途：统一声明和派发事件，当前最多支持 4 个参数。
-  - 使用提示：新增或修改事件时，业务开发优先从 `Assets/Game/Scripts/Event/EventConst.cs` 接入；框架层通用事件再查看 `Assets/DCFrame/Modules/Event/EventBase.cs`。
+  - 使用提示：新增项目业务事件时，优先在 `Assets/Game/Scripts/Event/EventConst.cs` 中补充；新增框架事件或者若要复用框架已有事件名，查看 `EventBase.Frame` 对应的 `Assets/DCFrame/Modules/Event/EventFrame.cs`。当前 `EventConst.cs` 默认是占位空类，不要把它误判为“项目没有事件系统”。
 - `Localize`
   - 目录：`Assets/DCFrame/Modules/Localize/`
   - 配置：`Assets/Game/Settings/Localize/`
@@ -46,8 +47,8 @@
 - `TextFilter`
   - 目录：`Assets/DCFrame/Modules/TextFilter/`
   - 用途：基于屏蔽词判断与替换。
-  - 配置：`Assets/Game/Settings/TextFilter/TextFilter.txt`
-  - 使用提示：涉及敏感词判断或替换时，优先先看现有屏蔽词配置文件。
+  - 配置：`Assets/Game/Settings/TextFilter/TextFilter_global.txt`、`Assets/Game/Settings/TextFilter/TextFilter_<locale>.txt`
+  - 使用提示：涉及敏感词判断查询时，请使用`TextFilter.txt` 查询；
 - `UIManager`
   - 目录：`Assets/DCFrame/Modules/UIManager/`
   - 配置：`Assets/Game/Settings/UIManager/`
