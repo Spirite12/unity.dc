@@ -39,7 +39,7 @@
   - 接入位置：
     - `Assets/Game/Localize/`：本地化资源存放位置。
     - 界面文本来源优先联动 `table` 与现有本地化入口。
-  - 接入提示：当前仓库默认未初始化 `Assets/Game/Localize/`；若需求首次涉及资源本地化，先按 `localization.md` 建立目录结构，再生成资源映射。
+  - 接入提示：若需求首次涉及资源本地化，按 `localization.md` 中 `LocalizeRules` 的初始化流程执行，再继续资源映射和代码接入。
 - `Table`
   - 在 UI 内负责展示配置、文案来源与查表逻辑支持。
   - 读取：查看 `table.md`。

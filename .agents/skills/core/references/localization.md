@@ -9,7 +9,7 @@
 
 - `Assets/Game/Settings/Localize/`：本地化系统配置入口与编辑器工具入口。
 - `Assets/DCFrame/Modules/Localize/`：框架本地化运行时入口与规则目录。
-- `Assets/Game/Localize/`：本地化资源根目录，文本与资源本地化均从这里组织；当前仓库默认未初始化该目录，首次接入时可通过 `scripts/run_unity_task.py init-localize` 初始化。
+- `Assets/Game/Localize/`：本地化资源根目录，文本与资源本地化均从这里组织；首次接入时，初始化流程以 `LocalizeRules` 上的“本地化表生成”“本地化资源生成”为准，可通过 `scripts/run_unity_task.py init-localize` 顺序执行。
 - 编辑器入口：
   - `Tools/资源项/本地化资源生成`
   - `CONTEXT/Text/Add Localize`
@@ -58,7 +58,7 @@
 
 1. 先从策划案中拆出用户可见文案，以及需要随语言切换的资源。
 2. 判断文案应落到默认表、枚举表还是文本表；不要直接在代码或预制体里长期写死文案。
-3. 先确认 `Assets/Game/Localize/` 是否已存在；若不存在，优先调用 `scripts/run_unity_task.py init-localize` 初始化根目录、`Text/Table/` 与默认语言目录；若当前需求还涉及资源本地化，再补建对应资源类型目录。
+3. 若当前任务属于首次初始化 Localize，优先调用 `scripts/run_unity_task.py init-localize`，按 `LocalizeRules` 上“本地化表生成”“本地化资源生成”的顺序执行；不要额外定义一套独立初始化流程。
 4. 若涉及资源本地化，先确认资源类型目录是否已建立，并检查其下是否已有 `Table/` 与语言目录。
 5. 资源本地化文件需先由开发者放入对应语言目录；若需要占位资源，需先确认当前需求是否允许补建占位文件。
 6. 完成 `table` 与本地化规则配置后，再通过现有入口生成本地化数据与资源映射；优先调用 `scripts/run_unity_task.py localize` 执行资源生成；若脚本不可用，再回退到 Unity Editor 内的 `LocalizeEditor.CreateLocalizeAsset()` 入口。
@@ -69,8 +69,8 @@
 ## 完成定义
 
 - AI 完成：
-  - 本地化目录结构、规则接入、代码读取入口已补齐。
-  - `Assets/Game/Localize/` 未初始化时，需要处理初始化。
+  - 本地化规则接入、代码读取入口已补齐。
+  - 需要初始化 Localize 时，已按 `LocalizeRules` 的既有入口执行。
   - 可自动执行的生成步骤已执行；若未执行，已说明原因与当前状态。
 - 开发者完成：
   - 实际多语言资源提供、预制体上的本地化组件挂接、切语表现验收。

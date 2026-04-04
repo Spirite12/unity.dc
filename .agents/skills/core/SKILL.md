@@ -39,8 +39,8 @@ description: 用于阅读工程结构、编写和完善代码，以及在功能�
 ## scripts 索引
 
 - Unity 自动化入口：`scripts/run_unity_task.py`
-  - 用途：通过 Unity 命令行执行导表与本地化资源生成，并可初始化 `Assets/Game/Localize/` 目录结构。
-  - 使用提示：涉及 `TableEditor.PackageConfig()`、`LocalizeEditor.CreateLocalizeAsset()` 或首次初始化 `Assets/Game/Localize/` 时，优先调用该脚本，而不是临时手拼 `Unity.exe -executeMethod ...` 或手动散着建目录。
+  - 用途：通过 Unity 命令行执行导表与本地化资源生成，并可按 `LocalizeRules` 上的“本地化表生成”“本地化资源生成”按钮顺序执行初始化。
+  - 使用提示：涉及 `TableEditor.PackageConfig()`、`LocalizeEditor.CreateLocalizeAsset()` 或首次初始化 Localize 流程时，优先调用该脚本；
 
 ## references 索引
 
