@@ -31,7 +31,7 @@
 
 1. 先从策划案中拆出表清单、字段结构、主键规则，以及是否涉及枚举、多 key 和文本本地化。
 2. 检查 `Assets/Game/Table/` 下是否已有对应 `CSV`；有则优先在原表上扩展，没有再新增表。
-3. 新建或修改 `CSV` 时，保持第一行为字段名、第二行为字段注释、第三行开始为配置数据；若任务未明确要求核对具体配置值，不必逐行深读数据内容。
+3. 新建或修改 `CSV` 时，保持第一行为字段名、第二行为字段注释、第三行开始为配置数据；默认表字段命名按项目当前习惯使用首字母大写形式；`CSV` 统一使用 `UTF-8` 编码，若在 Windows 或 Unity 内打开出现中文乱码，优先检查是否为带 BOM 的 `UTF-8` 编码；若任务未明确要求核对具体配置值，不必逐行深读数据内容。
 4. 检查 `Assets/Game/Settings/Table/TableRules.asset` 是否已有对应规则；若没有，则补充表类型、本地化、多 key 与字段关联等配置。
 5. 表字段若涉及文本本地化，必须通过 `TableRules` 勾选本地化配置并生成对应的 Localization 数据，再联动 `localization.md` 处理接入。
 6. 规则确认后，通过现有工具执行导表，生成 `Assets/Game/Scripts/Table/` 下的表代码；优先调用 `scripts/run_unity_task.py table` 执行全量导表；若脚本不可用，再回退到 Unity Editor 内的 `TableEditor.PackageConfig()` 入口；不要把手改生成结果作为最终方案。
