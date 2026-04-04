@@ -16,11 +16,14 @@ namespace Game {
             // 音乐
             string path = Asset.GetPrefabPath("AudioToolkit/AudioControllerMain", Asset.PrefixPath.Settings);
             GameObject prefab = await LoadAsset<GameObject>(path);
-            Instantiate(prefab);
+            if (prefab != null) {
+                Instantiate(prefab);
+            }
         }
 
         protected override void OnDestroy() {
             RedTipMgr.Destroy();
+            base.OnDestroy();
         }
     }
 }
