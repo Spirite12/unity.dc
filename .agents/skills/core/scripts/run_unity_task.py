@@ -13,8 +13,9 @@ from typing import Iterable
 
 
 TASK_METHODS = {
-    "table": "TableEditor.PackageConfig",
-    "localize": "LocalizeEditor.CreateLocalizeAsset",
+    "table": "CodexBatchVerify.RunTablePackageConfig",
+    "localize": "CodexBatchVerify.RunLocalizeCreateAsset",
+    "init-localize": "CodexBatchVerify.RunInitLocalize",
 }
 
 
@@ -190,7 +191,7 @@ def main() -> int:
         print(str(exc), file=sys.stderr)
         return 2
 
-    if args.task in ("all", "init-localize"):
+    if args.task == "all":
         tasks = ("table", "localize")
     else:
         tasks = (args.task,)
