@@ -9,7 +9,7 @@
 
 - `Assets/Game/Settings/Localize/`：本地化系统配置入口与编辑器工具入口。
 - `Assets/DCFrame/Modules/Localize/`：框架本地化运行时入口与规则目录。
-- `Assets/Game/Localize/`：本地化资源根目录，文本与资源本地化均从这里组织；首次接入时，初始化流程以 `LocalizeRules` 上的“本地化表生成”“本地化资源生成”为准，可通过 `scripts/run_unity_task.py init-localize` 顺序执行。
+- `Assets/Game/Localize/`：本地化资源根目录，文本与资源本地化均从这里组织；首次接入时，初始化流程以 `LocalizeRules` 上的“本地化表生成”“本地化资源生成”为准，可通过 `scripts/run_unity_task.py init-localize` 顺序执行；若该流程执行后仍未生成目录或资源，视为环境或工程状态问题，应停止继续自动化处理并反馈开发者。
 - 编辑器入口：
   - `Tools/资源项/本地化资源生成`
   - `CONTEXT/Text/Add Localize`
