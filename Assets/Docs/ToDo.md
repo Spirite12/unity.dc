@@ -4,8 +4,11 @@
 
 # ToDo
 
-- [ ] 工程规范
-- [ ] 资源加载
+- [ ] Skills
+
+  - [ ] workflow.md 的文档完善
+  - [ ] 缺少具体的工程开发后的步骤；
+
 - [ ] 流程图：
 
   辅助工具：[Mermaid Chart](https://www.mermaidchart.com/)

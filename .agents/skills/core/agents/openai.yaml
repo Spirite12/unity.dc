@@ -1,0 +1,4 @@
+﻿interface:
+  display_name: "DC Core"
+  short_description: "Unity 项目核心开发规则与工程阅读入口"
+  default_prompt: "在阅读、修改或评审本项目代码前，先遵循当前仓库的 core skill 指南。"

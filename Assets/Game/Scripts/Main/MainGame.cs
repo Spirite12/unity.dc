@@ -14,13 +14,16 @@ namespace Game {
             RedTipMain redTip = new RedTipMain(RedTipConst.RedTipMain, null);
             RedTipMgr.Init(redTip);
             // 音乐
-            string path = Asset.GetPrefabPath("AudioToolkit/AudioControllerMain", Asset.EnumPrefixPath.Settings);
-            GameObject prefab = await Asset.LoadAsset(path) as GameObject;
-            Instantiate(prefab);
+            string path = Asset.GetPrefabPath("AudioToolkit/AudioControllerMain", Asset.PrefixPath.Settings);
+            GameObject prefab = await LoadAsset<GameObject>(path);
+            if (prefab != null) {
+                Instantiate(prefab);
+            }
         }
 
         protected override void OnDestroy() {
             RedTipMgr.Destroy();
+            base.OnDestroy();
         }
     }
 }

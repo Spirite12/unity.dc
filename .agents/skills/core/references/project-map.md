@@ -1,0 +1,65 @@
+# 工程目录与模块入口
+
+用于快速定位工程目录、模块入口与读写边界。
+
+## 顶层目录
+
+- `Assets/AddressableAssetsData`：Addressable 资源数据目录，默认不读、不改。
+- `Assets/DCFrame/`：框架模块与工具代码。
+- `Assets/Docs/`：版本、规范、记录等相关文档。
+- `Assets/Game/`：业务开发文件夹。
+- `Assets/Plugins/`：第三方插件目录。
+
+## 读写边界
+
+以下标识用于说明目录权限：
+
+- ①：只读，不改。
+- ②：业务开发模式下，只可读。
+- ③：框架开发模式下，只可读。
+
+相关目录如下：
+
+- `Assets/DCFrame/`：②
+- `Assets/Docs/`：②、③
+- 任意 `Editor/` 目录：②
+- `Assets/Plugins/`：①
+
+## 业务入口
+
+- `Assets/Game/Localize/`：本地化文本与资源数据目录。
+- `Assets/Game/Prefabs/Frame/`：运行时 UI / 框架预制体入口。
+- `Assets/Game/Scenes/Main.unity`：主场景。
+- `Assets/Game/Scripts/Event/EventConst.cs`：项目事件声明入口。
+- `Assets/Game/Scripts/Main/MainGame.cs`：游戏启动入口。
+- `Assets/Game/Scripts/RedTip/`：项目红点常量与根节点实现。
+- `Assets/Game/Scripts/Table/`：生成后的表代码目录。
+- `Assets/Game/Table/`：CSV 配表目录。
+
+## 框架入口
+
+- `Assets/DCFrame/Modules/Addressable/`：Addressable 资源规则与工具。
+- `Assets/DCFrame/Modules/Cache/`：本地缓存。
+- `Assets/DCFrame/Modules/Event/`：事件管理与框架事件基类。
+- `Assets/DCFrame/Modules/Localize/`：文本与资源本地化读取入口。
+- `Assets/DCFrame/Modules/RedTip/`：红点树底层实现。
+- `Assets/DCFrame/Modules/Table/`：表读取基类、规则定义、科学计数法转换。
+- `Assets/DCFrame/Modules/TextFilter/`：屏蔽词过滤。
+- `Assets/DCFrame/Modules/UIManager/`：UI 栈、层级、适配、预制体引用工具。
+
+## 插件目录边界
+
+`Assets/Plugins/` 优先通过项目封装和示例接入，默认不做逐文件深入阅读，也不作为业务开发主战场；通常不直接修改该目录下文件。
+
+### 当前插件目录
+
+- `Assets/Plugins/AudioToolkit/`
+  - 音效插件，项目接入入口位于 `Assets/Game/Settings/AudioToolkit/`
+- `Assets/Plugins/CsvHelper/`
+  - CSV 读取库，供 Table 模块使用
+- `Assets/Plugins/Demigiant/`
+  - 动效相关插件目录
+- `Assets/Plugins/TextMesh Pro/`
+  - TMPro 文本系统依赖
+- `Assets/Plugins/UniTask/`
+  - 项目主异步方案
