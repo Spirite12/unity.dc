@@ -58,7 +58,7 @@
 
 1. 先从策划案中拆出用户可见文案，以及需要随语言切换的资源。
 2. 判断文案应落到默认表、枚举表还是文本表；不要直接在代码或预制体里长期写死文案。
-3. 若当前任务属于首次初始化 Localize，优先调用 `scripts/run_unity_task.py init-localize`，按 `LocalizeRules` 上“本地化表生成”“本地化资源生成”的顺序执行；不要额外定义一套独立初始化流程。
+3. 当任务涉及本地化文本时，必须调用 `scripts/run_unity_task.py init-localize`，按 `LocalizeRules` 上“本地化表生成”“本地化资源生成”的顺序执行；禁止通过手工创建目录，若脚本因 Unity 占用或环境问题失败，必须停止并反馈开发者。
 4. 若涉及资源本地化，先确认资源类型目录是否已建立，并检查其下是否已有 `Table/` 与语言目录。
 5. 资源本地化文件需先由开发者放入对应语言目录；若需要占位资源，需先确认当前需求是否允许补建占位文件。
 6. 完成 `table` 与本地化规则配置后，再通过现有入口生成本地化数据与资源映射；优先调用 `scripts/run_unity_task.py localize` 执行资源生成；若脚本不可用，再回退到 Unity Editor 内的 `LocalizeEditor.CreateLocalizeAsset()` 入口。
