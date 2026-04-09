@@ -78,3 +78,7 @@ crashlytics-build.properties
 **/Record/
 
 !Assets/Plugins/**/*.dll
+
+# Python cache
+__pycache__/
+*.pyc

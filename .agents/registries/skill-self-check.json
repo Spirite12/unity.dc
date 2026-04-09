@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skills": [
+    {
+      "name": "core",
+      "config": ".agents/skills/core/scripts/self-check.json"
+    }
+  ]
+}

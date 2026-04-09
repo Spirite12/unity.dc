@@ -1,0 +1,134 @@
+{
+  "skill": "core",
+  "description": "工程入口、专题文档与 core Skill 自身的自检配置。",
+  "rules": [
+    {
+      "id": "core-entry",
+      "summary": "core Skill 入口、自检基础设施或仓库级协作规则发生变化。",
+      "triggers": [
+        "AGENTS.md",
+        ".agents/scripts/skill_self_check.py",
+        ".agents/registries/**",
+        ".agents/skills/core/SKILL.md",
+        ".agents/skills/core/scripts/self-check.json",
+        ".agents/skills/core/agents/openai.yaml"
+      ],
+      "documents": [
+        "AGENTS.md",
+        ".agents/skills/core/SKILL.md",
+        ".agents/skills/core/agents/openai.yaml"
+      ],
+      "checks": [
+        "确认仓库级通用规则、自检门禁与完成定义仍以根 AGENTS.md 为唯一准入层。",
+        "确认 core Skill 的使用顺序、索引、自检入口和实际文件路径一致。",
+        "确认 core Skill 的对外描述没有与当前职责边界冲突。"
+      ]
+    },
+    {
+      "id": "project-map",
+      "summary": "工程目录、业务入口或插件边界发生变化。",
+      "triggers": [
+        "Assets/Game",
+        "Assets/Game/**",
+        "Assets/Plugins",
+        "Assets/Plugins/**",
+        "Assets/DCFrame/Main",
+        "Assets/DCFrame/Main/**",
+        "Assets/Game/Scenes/**",
+        "Assets/Game/Scripts/Event/**",
+        "Assets/Game/Scripts/Main/**",
+        "Assets/Game/Scripts/RedTip/**"
+      ],
+      "documents": [
+        ".agents/skills/core/references/project-map.md"
+      ],
+      "checks": [
+        "确认顶层目录、读写边界、业务入口与框架入口仍能从文档中正确定位。",
+        "确认新增或变更的入口路径没有遗漏到 project-map 文档。"
+      ]
+    },
+    {
+      "id": "framework",
+      "summary": "框架模块、高频工具目录或项目设置入口发生变化。",
+      "triggers": [
+        "Assets/DCFrame",
+        "Assets/DCFrame/**",
+        "Assets/Game/Settings/**"
+      ],
+      "documents": [
+        ".agents/skills/core/references/framework.md"
+      ],
+      "checks": [
+        "确认框架高频模块、主入口脚本和使用边界仍与实际目录一致。",
+        "确认框架层变更是否需要同步更新业务开发侧的使用提示。"
+      ]
+    },
+    {
+      "id": "table",
+      "summary": "配表、导表规则、表生成脚本或生成结果入口发生变化。",
+      "triggers": [
+        "Assets/Game/Table/**",
+        "Assets/Game/Settings/Table/**",
+        "Assets/Game/Scripts/Table/**",
+        "Assets/DCFrame/Modules/Table/**",
+        "Assets/DCFrame/Editor/Modules/Table/**",
+        ".agents/skills/core/scripts/run_unity_task.py"
+      ],
+      "documents": [
+        ".agents/skills/core/references/table.md",
+        ".agents/skills/core/SKILL.md"
+      ],
+      "checks": [
+        "确认表目录、TableRules 入口、导表命令和生成结果目录仍然正确。",
+        "确认导表相关自动化命令、前置条件与回退方案没有过期。"
+      ]
+    },
+    {
+      "id": "localization",
+      "summary": "本地化目录、规则入口、生成脚本或初始化顺序发生变化。",
+      "triggers": [
+        "Assets/Game/Localize",
+        "Assets/Game/Localize/**",
+        "Assets/Game/Settings/Localize/**",
+        "Assets/DCFrame/Modules/Localize/**",
+        "Assets/DCFrame/Editor/Modules/Localize/**",
+        ".agents/skills/core/scripts/run_unity_task.py"
+      ],
+      "documents": [
+        ".agents/skills/core/references/localization.md",
+        ".agents/skills/core/SKILL.md"
+      ],
+      "checks": [
+        "确认 Localize 目录、LocalizeRules 入口、初始化顺序与脚本命令仍然正确。",
+        "确认本地化资源生成的自动化边界与开发者手工步骤没有过期。"
+      ]
+    },
+    {
+      "id": "ui",
+      "summary": "UI 联动模块、界面脚本落点、红点或音效接入边界发生变化。",
+      "triggers": [
+        "Assets/Game/Prefabs/**",
+        "Assets/Game/Scripts/Mono/**",
+        "Assets/Game/Scripts/Script/**",
+        "Assets/Game/Scripts/RedTip/**",
+        "Assets/Game/Scripts/Cache/**",
+        "Assets/Game/Scripts/Event/**",
+        "Assets/Game/Settings/UIManager/**",
+        "Assets/Game/Settings/AudioToolkit/**",
+        "Assets/DCFrame/Modules/UIManager/**",
+        "Assets/DCFrame/Modules/RedTip/**",
+        "Assets/DCFrame/Modules/Event/**",
+        "Assets/DCFrame/Modules/Cache/**",
+        "Assets/DCFrame/Modules/TextFilter/**",
+        "Assets/DCFrame/Modules/Addressable/**"
+      ],
+      "documents": [
+        ".agents/skills/core/references/ui.md"
+      ],
+      "checks": [
+        "确认 UI 联动模块、脚本落点、接入顺序与开发者手工边界仍然正确。",
+        "确认 RedTip、Event、Addressable、Cache 与 AudioToolkit 的入口说明没有过期。"
+      ]
+    }
+  ]
+}
