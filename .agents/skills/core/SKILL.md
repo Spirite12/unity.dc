@@ -27,6 +27,7 @@ description: 用于阅读工程结构、编写和完善代码，以及在功能�
 - 通用自检脚本：`.agents/scripts/skill_self_check.py`
 - 自检注册表：`.agents/registries/skill-self-check.json`
 - `core` 自检配置：`.agents/skills/core/scripts/self-check.json`
+- `core` 对外描述配置：`.agents/skills/core/agents/openai.yaml`
 - 当脚本命中 `core` 相关规则时，优先补丁式更新当前文档或对应 `references/*.md`，不整篇重写。
 
 ## scripts 索引

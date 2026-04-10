@@ -30,6 +30,10 @@
   - 配置：`Assets/Game/Settings/Localize/`
   - 用途：负责文本与资源本地化读取，文本来源统一接入 `table` 体系。
   - 使用提示：涉及文本或资源本地化时，先检查本地化配置与现有读取入口。
+- `Pool`
+  - 目录：`Assets/DCFrame/Modules/Pool/`
+  - 用途：按池名统一管理运行时对象复用，支持预热、回收、清理与缓存数量查询。
+  - 使用提示：涉及高频实例化/回收的运行时对象时，优先先定义好全局唯一的池名，再通过统一入口取出和回收。
 - `RedTip`
   - 目录：`Assets/DCFrame/Modules/RedTip/`
   - 项目入口：`Assets/Game/Scripts/RedTip/`

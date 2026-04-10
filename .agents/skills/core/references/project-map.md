@@ -39,10 +39,14 @@
 ## 框架入口
 
 - `Assets/DCFrame/Modules/Addressable/`：Addressable 资源规则与工具。
+- `Assets/DCFrame/Modules/Attribute/`：Inspector 辅助特性声明。
 - `Assets/DCFrame/Modules/Cache/`：本地缓存。
+- `Assets/DCFrame/Modules/Class/`：通用运行时辅助类与 GC 回收入口。
 - `Assets/DCFrame/Modules/Event/`：事件管理与框架事件基类。
 - `Assets/DCFrame/Modules/Localize/`：文本与资源本地化读取入口。
+- `Assets/DCFrame/Modules/Pool/`：按池名管理的对象池入口。
 - `Assets/DCFrame/Modules/RedTip/`：红点树底层实现。
+- `Assets/DCFrame/Modules/Singleton/`：单例基类入口。
 - `Assets/DCFrame/Modules/Table/`：表读取基类、规则定义、科学计数法转换。
 - `Assets/DCFrame/Modules/TextFilter/`：屏蔽词过滤。
 - `Assets/DCFrame/Modules/UIManager/`：UI 栈、层级、适配、预制体引用工具。
