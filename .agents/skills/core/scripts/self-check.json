@@ -28,16 +28,22 @@
       "id": "project-map",
       "summary": "工程目录、业务入口或插件边界发生变化。",
       "triggers": [
-        "Assets/Game",
-        "Assets/Game/**",
-        "Assets/Plugins",
-        "Assets/Plugins/**",
+        "Assets/AddressableAssetsData",
+        "Assets/AddressableAssetsData/**",
         "Assets/DCFrame/Main",
         "Assets/DCFrame/Main/**",
+        "Assets/DCFrame/Modules",
+        "Assets/DCFrame/Modules/**",
+        "Assets/Docs",
+        "Assets/Docs/**",
+        "Assets/Game",
+        "Assets/Game/**",
         "Assets/Game/Scenes/**",
         "Assets/Game/Scripts/Event/**",
         "Assets/Game/Scripts/Main/**",
-        "Assets/Game/Scripts/RedTip/**"
+        "Assets/Game/Scripts/RedTip/**",
+        "Assets/Plugins",
+        "Assets/Plugins/**"
       ],
       "documents": [
         ".agents/skills/core/references/project-map.md"
@@ -53,6 +59,10 @@
       "triggers": [
         "Assets/DCFrame",
         "Assets/DCFrame/**",
+        "Assets/Game/Scripts/Event/**",
+        "Assets/Game/Scripts/RedTip/**",
+        "Assets/Plugins/UniTask",
+        "Assets/Plugins/UniTask/**",
         "Assets/Game/Settings/**"
       ],
       "documents": [

@@ -4,11 +4,13 @@
 from __future__ import annotations
 
 import argparse
+from functools import lru_cache
 import json
+import re
 import subprocess
 import sys
 from dataclasses import dataclass
-from pathlib import Path, PurePosixPath
+from pathlib import Path
 
 
 @dataclass(frozen=True)
@@ -80,6 +82,29 @@ def normalize_path(path_text: str) -> str:
     while normalized.startswith("./"):
         normalized = normalized[2:]
     return normalized
+
+
+@lru_cache(maxsize=None)
+def compile_glob(pattern: str) -> re.Pattern[str]:
+    """将仓库内使用的 glob 规则转换为正则表达式。"""
+    parts: list[str] = ["^"]
+    index = 0
+    while index < len(pattern):
+        char = pattern[index]
+        if char == "*":
+            if index + 1 < len(pattern) and pattern[index + 1] == "*":
+                while index + 1 < len(pattern) and pattern[index + 1] == "*":
+                    index += 1
+                parts.append(".*")
+            else:
+                parts.append("[^/]*")
+        elif char == "?":
+            parts.append("[^/]")
+        else:
+            parts.append(re.escape(char))
+        index += 1
+    parts.append("$")
+    return re.compile("".join(parts))
 
 
 def run_git(repo_root: Path, args: list[str]) -> str:
@@ -170,7 +195,7 @@ def matches_pattern(path_text: str, pattern: str) -> bool:
         return False
     if normalized_path == normalized_pattern:
         return True
-    return PurePosixPath(normalized_path).match(normalized_pattern)
+    return bool(compile_glob(normalized_pattern).match(normalized_path))
 
 
 def rule_matches(rule: Rule, changed_files: list[str]) -> bool:
