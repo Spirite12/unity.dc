@@ -32,6 +32,8 @@
         "Assets/AddressableAssetsData/**",
         "Assets/DCFrame/Main",
         "Assets/DCFrame/Main/**",
+        "Assets/DCFrame/Foundation",
+        "Assets/DCFrame/Foundation/**",
         "Assets/DCFrame/Modules",
         "Assets/DCFrame/Modules/**",
         "Assets/Docs",

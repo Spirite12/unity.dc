@@ -41,7 +41,7 @@
 - `Assets/DCFrame/Modules/Addressable/`：Addressable 资源规则与工具。
 - `Assets/DCFrame/Modules/Attribute/`：Inspector 辅助特性声明。
 - `Assets/DCFrame/Modules/Cache/`：本地缓存。
-- `Assets/DCFrame/Modules/Class/`：通用运行时辅助类与 GC 回收入口。
+- `Assets/DCFrame/Foundation/`：框架基础运行时辅助目录，当前包含 `GCCollect.cs` 与 `StepFlow.cs` 等基础能力入口。
 - `Assets/DCFrame/Modules/Event/`：事件管理与框架事件基类。
 - `Assets/DCFrame/Modules/Localize/`：文本与资源本地化读取入口。
 - `Assets/DCFrame/Modules/Pool/`：按池名管理的对象池入口。

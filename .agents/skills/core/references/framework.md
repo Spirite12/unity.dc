@@ -75,11 +75,14 @@
 - `Assets/DCFrame/Utility/`：高频工具目录，供业务层和框架层复用通用能力。
 - 当前主要包括字符串、文件、本地化、配表、时间等通用辅助能力。
 - 适合沉淀无业务状态、可跨模块复用的辅助逻辑；不适合放具体业务规则或模块专属流程。
+- `Assets/DCFrame/Foundation/`：框架基础运行时目录，当前包含 `GCCollect.cs` 与 `StepFlow.cs`。
+- `StepFlow` 适用于单脚本内按步骤顺序推进的轻量流程控制；步骤通过 `AddStep(...)` 注册，通过 `CompleteStep()` 自动推进到下一步。
 
 ## 使用规则
 
 - 开发前先检查对应模块在 `Assets/Game/Settings/` 下是否已有配置资产、规则或可复用示例。
 - 优先复用项目已有封装与示例，不直接修改插件源码或框架底层实现。
 - 业务需求优先在 `Assets/Game/` 实现，非必要不修改 `DCFrame`。
+- `Assets/DCFrame/Foundation/`：适合沉淀框架级基础能力与轻量流程控制；新增或调整前需先告知开发者。
 - `Assets/DCFrame/Utility/`：可按现有方式补充同类工具；修改前需先告知开发者。
 - `Assets/DCFrame/Modules/`：默认只读；仅在需要沉淀通用能力时，且经开发者审核后，才允许修改。
