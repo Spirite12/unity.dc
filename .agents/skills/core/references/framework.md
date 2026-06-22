@@ -25,6 +25,10 @@
   - 框架内置事件入口：`Assets/DCFrame/Modules/Event/EventFrame.cs`
   - 用途：统一声明和派发事件，当前最多支持 4 个参数。
   - 使用提示：新增项目业务事件时，优先在 `Assets/Game/Scripts/Event/EventConst.cs` 中补充；新增框架事件或者若要复用框架已有事件名，查看 `EventBase.Frame` 对应的 `Assets/DCFrame/Modules/Event/EventFrame.cs`。当前 `EventConst.cs` 默认是占位空类，不要把它误判为“项目没有事件系统”。
+- `FSM`
+  - 目录：`Assets/DCFrame/Modules/FSM/`
+  - 用途：提供有限状态机、状态节点、转换条件与状态接口。
+  - 使用提示：涉及角色、流程或界面状态切换时，优先评估是否可复用现有 FSM 节点与转换结构。
 - `Localize`
   - 目录：`Assets/DCFrame/Modules/Localize/`
   - 配置：`Assets/Game/Settings/Localize/`
@@ -53,6 +57,10 @@
   - 用途：基于屏蔽词判断与替换。
   - 配置：`Assets/Game/Settings/TextFilter/TextFilter_global.txt`、`Assets/Game/Settings/TextFilter/TextFilter_<locale>.txt`
   - 使用提示：业务开发若需判断或替换敏感词，优先通过 `Assets/DCFrame/Modules/TextFilter/TextFilter.cs` 的现有接口接入；词库文本文件仅作为配置来源，不直接在业务代码中读取。
+- `UGUI`
+  - 目录：`Assets/DCFrame/UGUI/`
+  - 用途：沉淀拖拽、滑动识别、滚动列表、页签、图片与文本效果等 UGUI 组件。
+  - 使用提示：新增通用 UI 交互或表现组件时，先检查该目录是否已有可复用实现；业务界面逻辑仍优先落在 `Assets/Game/`。
 - `UIManager`
   - 目录：`Assets/DCFrame/Modules/UIManager/`
   - 配置：`Assets/Game/Settings/UIManager/`
@@ -77,6 +85,7 @@
 - 适合沉淀无业务状态、可跨模块复用的辅助逻辑；不适合放具体业务规则或模块专属流程。
 - `Assets/DCFrame/Foundation/`：框架基础运行时目录，当前包含 `GCCollect.cs` 与 `StepFlow.cs`。
 - `StepFlow` 适用于单脚本内按步骤顺序推进的轻量流程控制；步骤通过 `AddStep(...)` 注册，通过 `CompleteStep()` 自动推进到下一步。
+- `Assets/DCFrame/Editor/UGUI/`：UGUI 通用组件的编辑器扩展入口。
 
 ## 使用规则
 

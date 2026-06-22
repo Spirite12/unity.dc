@@ -65,5 +65,7 @@
   - 动效相关插件目录
 - `Assets/Plugins/TextMesh Pro/`
   - TMPro 文本系统依赖
+- `Assets/Plugins/UnityTimer/`
+  - 计时器插件，提供运行时定时、取消、暂停与恢复能力
 - `Assets/Plugins/UniTask/`
   - 项目主异步方案
