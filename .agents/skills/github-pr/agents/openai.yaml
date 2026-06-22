@@ -1,0 +1,4 @@
+interface:
+  display_name: "GitHub PR"
+  short_description: "主仓库与框架子仓库的 GitHub PR 提交流程"
+  default_prompt: "Use $github-pr to prepare the current Unity project branch, run the Core Skill self-check gate, and create GitHub pull requests for the main repository and DCFrame repository."

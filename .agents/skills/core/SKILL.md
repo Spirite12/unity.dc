@@ -16,7 +16,7 @@ description: 用于阅读工程结构、编写和完善代码，以及在功能�
 ## 当前职责
 
 - `core` 负责工程入口导航、专题文档索引、模块边界说明与 `core` 自身的自检配置。
-- 仓库级通用规则、完成定义与通用自检门禁不在本 Skill 内重复维护。
+- 仓库级通用规则与完成定义不在本 Skill 内重复维护；PR 前 Core 检查流程由 `github-pr` Skill 维护。
 
 ## 业务开发约束
 
@@ -28,7 +28,7 @@ description: 用于阅读工程结构、编写和完善代码，以及在功能�
 - 自检注册表：`.agents/registries/skill-self-check.json`
 - `core` 自检配置：`.agents/skills/core/scripts/self-check.json`
 - `core` 对外描述配置：`.agents/skills/core/agents/openai.yaml`
-- 当脚本命中 `core` 相关规则时，优先补丁式更新当前文档或对应 `references/*.md`，不整篇重写。
+- 当 PR 前检查命中 `core` 相关规则时，优先补丁式更新当前文档或对应 `references/*.md`，不整篇重写。
 
 ## scripts 索引
 

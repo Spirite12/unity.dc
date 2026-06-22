@@ -19,7 +19,7 @@
         ".agents/skills/core/agents/openai.yaml"
       ],
       "checks": [
-        "确认仓库级通用规则、自检门禁与完成定义仍以根 AGENTS.md 为唯一准入层。",
+        "确认仓库级通用规则与完成定义仍以根 AGENTS.md 为准，PR 前 Core 检查流程由 github-pr Skill 维护。",
         "确认 core Skill 的使用顺序、索引、自检入口和实际文件路径一致。",
         "确认 core Skill 的对外描述没有与当前职责边界冲突。"
       ]
