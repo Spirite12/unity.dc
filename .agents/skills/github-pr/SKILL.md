@@ -17,10 +17,11 @@ description: 用于提交当前项目到 GitHub 并创建 Pull Request。适用�
 3. 不使用 `git reset --hard`、强推或破坏性命令，除非开发者明确要求。
 4. GitHub token、浏览器登录和权限授权由开发者处理；Agent 只检查 `gh auth status` 并说明阻塞点。
 5. PR 标题必须由开发者最终确认。Agent 先基于分支整体改动列出 1-2 个标题候选，再等待开发者给出最终标题。
+6. 创建 PR 前优先使用 `gh`；若 `gh` 不可用或未登录，输出明确的安装、登录和网页登录创建方案。
 
-## 第一阶段：PR 前 Core Skill 检查
+## 第一阶段：Core Skill 检查
 
-1. 确认目标分支。优先读取远端默认分支；若无法可靠判断，询问开发者。
+1. 确认当前目标分支；若无法可靠判断，询问开发者。
 2. 读取当前分支相对目标分支的全部改动，而不是逐提交自检。
 3. 汇总分支整体改动命中的节点、目录与关键入口。
 4. 只检查 Core Skill：
@@ -37,32 +38,37 @@ description: 用于提交当前项目到 GitHub 并创建 Pull Request。适用�
    - 已更新的文件与具体内容摘要；
    - Core Skill 检查命令与结果；
    - 需要开发者审核确认的事项。
+7. 在阶段报告后追加询问：是否需要帮忙推送当前 Git 更改到远端。
+   - 若 Core Skill 检查产生了文档或脚本改动，提示这些改动需要先提交并推送到远端，后续开发者使用 Skill 时才能获取最新内容。
+   - 推送前必须先让开发者确认要提交/推送的文件范围、提交信息和目标远端分支。
+   - 不把该询问等同于第一阶段审核通过；开发者可选择只确认报告、不推送，或确认报告并授权提交推送。
 
 ## 第二阶段：创建 GitHub PR
 
 开发者确认第一阶段报告后，按以下顺序处理：
 
-1. 分别检查主仓库与框架子仓库的状态：
+1. 优先判断当前环境是否可用 `gh`：
+   - 先执行 `gh --version` 或 `Get-Command gh`；若 PATH 未刷新，可在常见安装目录或开发者提供路径中查找 `gh.exe`，并用完整路径重试。
+   - 再执行 `gh auth status` 检查登录状态。
+   - 若 `gh` 未安装或不可用，停止自动创建 PR，并输出对应仓库的 GitHub 创建页面地址：
+     - 主仓库：`https://github.com/<owner>/<main-repo>/compare/<target>...<branch>?expand=1`
+     - 框架子仓库：`https://github.com/<owner>/<frame-repo>/compare/<target>...<branch>?expand=1`
+   - 同时输出 GitHub CLI 安装与登录提示：
+     - 安装地址：`https://github.com/cli/cli/releases`
+     - 第一次使用前需要登录 GitHub：`gh auth login`
+     - 一般选择：`GitHub.com`、`HTTPS`、`Login with a web browser`
+     - 登录完成后验证：`gh auth status`
+2. 分别检查主仓库与框架子仓库的状态：
    - `git status --short`
    - `git branch --show-current`
    - `git remote -v`
    - `gh auth status`
-2. 确认每个仓库的当前分支、目标分支和远端仓库。
-3. 基于分支整体改动列出 1-2 个 PR 标题候选，等待开发者给出最终标题。
-4. 生成 PR 正文草稿，并等待开发者确认。正文至少包含：
-   - 仓库类型：主仓库或框架子仓库；
+3. 确认每个仓库的当前分支、目标分支和远端仓库。
+4. 基于分支整体改动列出 1-2 个 PR 标题候选，等待开发者给出最终标题。
+5. 生成 PR 正文草稿，并等待开发者确认。正文至少包含：
    - 当前分支与目标分支；
    - 变更摘要；
    - Core Skill 自检结果；
-   - 人工审核或 Unity 编辑器内确认项。
-5. 推送当前分支到 GitHub 远端。
-6. 分别为主仓库和框架子仓库创建 PR。
-7. 输出两个 PR 链接；若某个仓库不需要创建 PR，说明原因。
-
-## 常用命令提示
-
-- 查看默认远端分支：`git remote show origin`
-- 查看分支改动文件：`git diff --name-only <base>...HEAD`
-- 查看当前脏改动：`git status --short`
-- 检查 GitHub CLI 登录：`gh auth status`
-- 创建 PR：`gh pr create --base <target> --head <branch> --title "<title>" --body "<body>"`
+6. 推送当前分支到 GitHub 远端。
+7. 分别为主仓库和框架子仓库创建 PR。
+8. PR 创建成功后，列出每个 GitHub PR 网页地址，确保开发者可以直接点开查看；若某个仓库不需要创建 PR，说明原因并给出已存在 PR 或 compare 页面地址。
