@@ -1,0 +1,19 @@
+{
+  "_说明": [
+    "host 填服务器 IP 或域名；remoteRoot、publicBaseUrl 可使用 {host} 占位，也可以直接填写完整值",
+    "port 是 SSH 端口，默认通常是 22；如果服务器控制台或安全组改过 SSH 端口，请填实际端口",
+    "user 是 SSH 登录用户名",
+    "privateKey 填本机 SSH 私钥路径；可在 PowerShell 用 Get-ChildItem C:\\Users\\zyq\\.ssh 查看，常见如 C:/Users/zyq/.ssh/id_ed25519。",
+    "如果没有私钥，可用 ssh-keygen -t ed25519 生成；再把对应 .pub 公钥内容加入服务器该用户的 ~/.ssh/authorized_keys。",
+    "platform 不需要配置，工具会使用 Unity 当前 BuildTarget。",
+    "remoteBuildPath 可选；不填时默认使用 ServerData/[BuildTarget]。",
+    "remoteLoadPath 不需要配置，工具会自动使用 publicBaseUrl + /[BuildTarget]。"
+  ],
+  "host": "your.server.ip",
+  "port": 22,
+  "user": "root",
+  "privateKey": "C:/Users/you/.ssh/id_rsa",
+  "remoteRoot": "/opt/1panel/www/sites/{host}/index/addressables",
+  "publicBaseUrl": "http://{host}/addressables",
+  "remoteBuildPath": "ServerData/[BuildTarget]"
+}

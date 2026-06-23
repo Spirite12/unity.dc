@@ -82,3 +82,6 @@ crashlytics-build.properties
 # Python cache
 __pycache__/
 *.pyc
+
+# Local hot update upload config
+/Tools/HotUpdate/AAUploadData.json
