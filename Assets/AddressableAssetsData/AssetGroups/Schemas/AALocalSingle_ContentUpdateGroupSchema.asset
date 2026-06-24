@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5834b5087d578d24c926ce20cd31e6d6, type: 3}
-  m_Name: AAGroupLabel_ContentUpdateGroupSchema
+  m_Name: AALocalSingle_ContentUpdateGroupSchema
   m_EditorClassIdentifier: 
-  m_Group: {fileID: 11400000, guid: b05c45d5a22c2d04daac43f094fd55be, type: 2}
+  m_Group: {fileID: 11400000, guid: 50f0d22cbd3129a49a931fa7b39e3011, type: 2}
   m_StaticContent: 0

@@ -10,16 +10,24 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
-  m_Name: AAGroupLabel
+  m_Name: AALocalFolder
   m_EditorClassIdentifier: 
-  m_GroupName: AAGroupLabel
+  m_GroupName: AALocalFolder
   m_Data:
     m_SerializedData: []
-  m_GUID: 63490073ed2ea95468259e14a3290aaf
-  m_SerializeEntries: []
+  m_GUID: 8dc09877bab655f41877466065ad5657
+  m_SerializeEntries:
+  - m_GUID: 8286f3692328fed4ca8fa8fccedaf110
+    m_Address: Assets/Game/Prefabs/Frame
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 9159fe55d98b84c40868401e217f7386
+    m_Address: Assets/Game/Settings/AudioToolkit
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: ebb48f0a1d45c45479c2c7847ed37450, type: 2}
   m_SchemaSet:
     m_Schemas:
-    - {fileID: 11400000, guid: 61196a81338e60949bca8a784056818f, type: 2}
-    - {fileID: 11400000, guid: 7ee4f4d18175df240b6cc1cfe7d1ff0f, type: 2}
+    - {fileID: 11400000, guid: fa514b304d7c67045916a866ff7cb6a8, type: 2}
+    - {fileID: 11400000, guid: a6f9366158270934aa617ad893b0ed7e, type: 2}

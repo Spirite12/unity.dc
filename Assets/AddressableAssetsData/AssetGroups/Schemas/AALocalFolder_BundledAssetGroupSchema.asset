@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e5d17a21594effb4e9591490b009e7aa, type: 3}
-  m_Name: AAGroupSingle_BundledAssetGroupSchema
+  m_Name: AALocalFolder_BundledAssetGroupSchema
   m_EditorClassIdentifier: 
-  m_Group: {fileID: 11400000, guid: 845355298f07d584392b31e5b5eb9f9b, type: 2}
+  m_Group: {fileID: 11400000, guid: ffd42bb238a43734fad5a7360423d905, type: 2}
   m_InternalBundleIdMode: 1
   m_Compression: 1
   m_IncludeAddressInCatalog: 1
