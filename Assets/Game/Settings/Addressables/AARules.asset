@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b45ab2708beea904080cd4a9c0c1b944, type: 3}
   m_Name: AARules
   m_EditorClassIdentifier: 
-  enableHotUpdate: 0
   singleList:
     assetList: []
     dirList: []
