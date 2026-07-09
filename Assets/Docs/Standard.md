@@ -15,10 +15,11 @@
 
 # 分支命名规范
 
-- 格式：type/branch_version_function@name
+- 格式：`type/branch_version_function@name`
 
   - type：类型
-  - version：版本号
+  - branch：分支阶段简写
+  - version：版本号，格式同 `X.Y.Z`
   - function：功能开发命名
   - name：开发者的名称
   
@@ -38,18 +39,39 @@
 
 # Git 提交规范
 
-- 格式：<类型> 说明内容 
-- 示例：<feature> 框架功能上传； 
+- 格式：`<类型> 说明内容`
+- 示例：`<code> 接入表格读取入口`
+- 类型选择原则：
+  - 优先选择能描述主要改动资源的类型；
+  - 一个提交同时包含多类资源时，优先选择“整合类类型”；
+  - `misc` 仅作为兜底类型，确认无法归入其他类型时使用。
 
-|  类型   |   使用情景   |                 提交资源格式                 |
-| :-----: | :----------: | :------------------------------------------: |
-| feature |    新功能    |               cs、txt、prefab                |
-|   fix   |   Bug修复    |                   cs、txt                    |
-|  style  | 代码规范修改 |                   cs、txt                    |
-|  test   |   测试代码   |                   cs、txt                    |
-|   ui    |   ui 资源    |           prefab、png、spriteatlas           |
-|  anim   |   动画资源   | prefab、anim、controller、overrideController |
-|   doc   |   文档更新   |           xlsx、pdf、docx、md、txt           |
-|  scene  |   场景资源   |             prefab、scene、asset             |
-| plugin  |     插件     |                      *                       |
-|  misc   |   工程杂项   |                      *                       |
+## 常用资源类型
+
+|    类型    |       使用情景       |                         常见资源格式                          |
+| :--------: | :------------------: | :-----------------------------------------------------------: |
+|    code    |      运行时代码      |                       cs、asmdef、json                        |
+|   editor   | 编辑器工具与生成脚本 |                         cs、asset、json                       |
+|   table    |       配表数据       |                         csv、xlsx、json                       |
+|  localize  |       本地化内容     |                         csv、asset、png                       |
+|     ui     |       UI 资源        |                  prefab、png、spriteatlas、asset              |
+|    anim    |       动画资源       |            anim、controller、overrideController、prefab        |
+|   scene    |       场景资源       |                         unity、prefab、asset                  |
+|   audio    |       音频资源       |                         wav、mp3、ogg、asset                  |
+|   shader   |    Shader 与材质     |                         shader、mat、cginc、hlsl              |
+|   config   |     工程配置文件     |                         asset、json、xml、asmdef              |
+|    doc     |       文档更新       |                         md、txt、pdf、docx                    |
+|    test    |       测试内容       |                         cs、asset、json                       |
+
+## 整合类类型
+
+|    类型    |             使用情景             |                         常见提交内容                          |
+| :--------: | :------------------------------: | :-----------------------------------------------------------: |
+|  feature   | 新功能或完整玩法/系统接入         | 代码、预制体、UI、表格、本地化、配置等围绕同一功能的完整改动 |
+|    fix     | Bug 修复或资源引用修正            | 修复代码、配置、预制体、表格、本地化或资源引用错误           |
+|  refactor  | 不改变行为的结构调整              | 代码结构、目录组织、命名整理、资源路径调整                   |
+|   polish   | 表现、交互、文案或调参优化        | UI 微调、动画节奏、音效触发、数值体验、提示文案               |
+|   plugin   | 插件接入、升级或移除              | 插件目录、插件配置、接入封装、示例资源                       |
+|   build    | 构建、打包、CI 或发布配置         | 构建脚本、平台配置、CI 配置、版本资源                         |
+|   chore    | 工程维护与非业务性整理            | 依赖配置、忽略规则、目录占位、自动化辅助文件                 |
+|    misc    | 无法归类的兜底提交                | 仅在以上类型均不适用时使用                                   |
