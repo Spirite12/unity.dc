@@ -9,7 +9,14 @@ namespace Game {
             CacheInit.Init();
         }
 
-        private async UniTask Start() {
+        private void Start() {
+            InitializeAsync().Forget();
+        }
+
+        /// <summary>
+        /// 初始化游戏数据
+        /// </summary>
+        private async UniTask InitializeAsync() {
             // 红点
             RedTipMain redTip = new RedTipMain(RedTipConst.RedTipMain, null);
             RedTipMgr.Init(redTip);
