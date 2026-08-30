@@ -16,7 +16,7 @@ description: 用于阅读工程结构、编写和完善代码，以及在功能�
 ## 当前职责
 
 - `core` 负责工程入口导航、专题文档索引、模块边界说明与 `core` 自身的自检配置。
-- 仓库级通用规则与完成定义不在本 Skill 内重复维护；PR 前 Core 检查流程由 `github-pr` Skill 维护。
+- 仓库级通用规则与完成定义不在本 Skill 内重复维护；PR 前 Core 检查流程由根目录 `AGENTS.md` 约束，通用 GitHub 操作由系统级 `github-workflow` Skill 执行。
 
 ## 业务开发约束
 

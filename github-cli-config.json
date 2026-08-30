@@ -1,0 +1,162 @@
+{
+  "repositories": [
+    {
+      "name": "main",
+      "path": ".",
+      "baseBranch": "develop",
+      "primary": true
+    },
+    {
+      "name": "dcframe",
+      "path": "Assets/DCFrame",
+      "baseBranch": "develop"
+    }
+  ],
+  "version": {
+    "file": "Assets/Docs/Version.md",
+    "upgradeRules": {
+      "X": {
+        "increment": 1,
+        "reset": ["Y", "Z"]
+      },
+      "Y": {
+        "increment": 1,
+        "reset": ["Z"]
+      },
+      "Z": {
+        "increment": 1,
+        "reset": []
+      }
+    }
+  },
+  "branch": {
+    "format": "{type}/{stage}_{version}_{function}@{developer}",
+    "types": {
+      "feature": "功能开发",
+      "hotfix": "功能修复"
+    },
+    "stages": {
+      "dev": "develop",
+      "rel": "release"
+    }
+  },
+  "commit": {
+    "format": "<类型> 说明内容",
+    "types": {
+      "feature": {
+        "description": "新功能或完整玩法/系统接入",
+        "commonContent": ["代码", "预制体", "UI", "表格", "本地化", "配置"]
+      },
+      "fix": {
+        "description": "Bug 修复或资源引用修正",
+        "commonContent": ["代码", "配置", "预制体", "表格", "本地化", "资源引用"]
+      },
+      "refactor": {
+        "description": "不改变行为的结构调整",
+        "commonContent": ["代码结构", "目录组织", "命名整理", "资源路径"]
+      },
+      "polish": {
+        "description": "表现、交互、文案或调参优化",
+        "commonContent": ["UI 微调", "动画节奏", "音效触发", "数值体验", "提示文案"]
+      },
+      "plugin": {
+        "description": "插件接入、升级或移除",
+        "commonContent": ["插件目录", "插件配置", "接入封装", "示例资源"]
+      },
+      "build": {
+        "description": "构建、打包、CI 或发布配置",
+        "commonContent": ["构建脚本", "平台配置", "CI 配置", "版本资源"]
+      },
+      "chore": {
+        "description": "工程维护与非业务性整理",
+        "commonContent": ["依赖配置", "忽略规则", "目录占位", "自动化辅助文件"]
+      },
+      "misc": {
+        "description": "无法归类的兜底提交",
+        "commonContent": ["无法归类的工程改动"]
+      }
+    },
+    "resourceTypes": {
+      "code": {
+        "description": "运行时代码",
+        "formats": ["cs", "asmdef", "json"],
+        "commonContent": ["运行逻辑"]
+      },
+      "editor": {
+        "description": "编辑器工具与生成脚本",
+        "formats": ["cs", "asset", "json"],
+        "commonContent": ["编辑器工具", "生成脚本"]
+      },
+      "table": {
+        "description": "配表数据",
+        "formats": ["csv", "xlsx", "json"],
+        "commonContent": ["表格数据"]
+      },
+      "localize": {
+        "description": "本地化内容",
+        "formats": ["csv", "asset", "png"],
+        "commonContent": ["本地化文本", "本地化资源"]
+      },
+      "ui": {
+        "description": "UI 资源",
+        "formats": ["prefab", "png", "spriteatlas", "asset"],
+        "commonContent": ["界面布局", "图片", "交互资源"]
+      },
+      "anim": {
+        "description": "动画资源",
+        "formats": ["anim", "controller", "overrideController", "prefab"],
+        "commonContent": ["动画", "动画控制器"]
+      },
+      "scene": {
+        "description": "场景资源",
+        "formats": ["unity", "prefab", "asset"],
+        "commonContent": ["场景", "场景资源"]
+      },
+      "audio": {
+        "description": "音频资源",
+        "formats": ["wav", "mp3", "ogg", "asset"],
+        "commonContent": ["音效", "音乐"]
+      },
+      "shader": {
+        "description": "Shader 与材质",
+        "formats": ["shader", "mat", "cginc", "hlsl"],
+        "commonContent": ["Shader", "材质"]
+      },
+      "config": {
+        "description": "工程配置文件",
+        "formats": ["asset", "json", "xml", "asmdef"],
+        "commonContent": ["工程配置", "构建配置"]
+      },
+      "doc": {
+        "description": "文档更新",
+        "formats": ["md", "txt", "pdf", "docx"],
+        "commonContent": ["项目文档"]
+      },
+      "test": {
+        "description": "测试内容",
+        "formats": ["cs", "asset", "json"],
+        "commonContent": ["自动化测试", "测试资源"]
+      }
+    }
+  },
+  "github": {
+    "baseBranch": "develop",
+    "mergeMethod": "merge",
+    "pr": {
+      "bodySections": [
+        "branches",
+        "summary",
+        "verification"
+      ]
+    },
+    "tag": {
+      "afterMerge": true,
+      "format": "{version}",
+      "annotated": true
+    },
+    "release": {
+      "afterTag": true,
+      "notesFile": "Assets/Docs/Version.md"
+    }
+  }
+}

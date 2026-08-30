@@ -2,18 +2,31 @@
 
 ## 基本规则
 
-- 所有文本文件统一使用 UTF-8 编码。
-- 仓库级稳定规则优先写在本文件；模块级、专题级和易变化的说明写在对应 Skill 与 `references` 文档中。
-- 回复时请明确告知使用者：本次使用了哪些 `Skill`。
 - 回复时若发现计划性或后续待办内容，先提示使用者是否写入 `Assets/Docs/ToDo.md`。
-- 执行 `git commit`、推送远端前，先读取 `Assets/Docs/Standard.md` 中的“Git 提交规范”，按规范生成提交信息；工作区内只提交与请求直接相关的文件，并在提交前明确说明本次提交范围。
 
 ## 脚本规范
 
-- 新增或修改函数时，按项目既有规范补充简洁清晰的中文注释。
-- C# / Unity 类成员默认先按访问级别排序，再按成员类型排序；在Unity 脚本中，`[SerializeField] private` 字段允许作为例外放在类顶部，便于查看 Inspector 配置项。
-  - 访问级别顺序：`public`、`internal`、`protected` 、`private`
-  - 同一访问级别内，成员顺序：事件、构造函数 / 生命周期函数、属性 / 索引器、方法、嵌套类型、`const`、`static` 字段、实例字段
+1. 新增或修改函数时，按项目既有规范补充简洁清晰的中文注释。
+2. Unity 和 C# 脚本规范
+   - 类成员默认先按访问级别排序，再按成员类型排序。
+   - [SerializeField] private 字段允许作为例外放在类顶部，便于查看 Inspector 配置项。
+   - 访问级别顺序：public、internal、protected、private。
+   - 同一访问级别内，成员顺序：事件、构造函数 / 生命周期函数、属性 / 索引器、方法、嵌套类型、const、static 字段、实例字段。
+
+## GitHub PR 项目流程
+
+执行 GitHub PR 或发布流程时，项目参数以 `github-cli-config.json` 为准，并依次完成 Core Skill 检查、Todo 清理和 PR 流程；每项完成后报告结果，获得开发者确认后再继续。
+
+### Core Skill 检查
+
+1. 创建 PR 前，按 `.agents/registries/skill-self-check.json` 中的 `core` 配置执行一次自检；
+2. 若改动影响 Core Skill 事实，补丁式更新对应文档，并报告检查范围、更新情况、命令和结果。
+
+### Todo 清理
+
+1. 检查 `Assets/Docs/ToDo.md`：
+2. 只删除能明确对应本次已完成改动的事项；无关、部分完成或无法确认的事项必须保留。发现未经授权的本地变更时先报告，不修改。
+3. 清理后报告删除项、差异和保留事项；有清理改动时，单独提交和推送前等待开发者确认。
 
 
 ## 完成定义
