@@ -39,7 +39,10 @@ namespace Game {
                     return;
                 }
 
-                await DownloadStartupAssets();
+                if (!await DownloadStartupAssets()) {
+                    Debug.LogError("启动前资源下载失败，停止首包热更测试流程。");
+                    return;
+                }
                 Debug.Log("首包热更测试完成。");
             }
             catch (Exception ex) {
