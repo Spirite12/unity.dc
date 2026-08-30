@@ -9,10 +9,10 @@ namespace Game {
         /// </summary>
         public static void Init() {
             foreach (var keyValue in redTipTreeDic) {
-                RedTipTree.redTipTreeDic.Add(keyValue.Key, keyValue.Value);
+                RedTipTree.redTipTreeDic[keyValue.Key] = keyValue.Value;
             }
             foreach (var keyValue in redTipBaseDic) {
-                RedTipTree.redTipBaseDic.Add(keyValue.Key, keyValue.Value);
+                RedTipTree.redTipBaseDic[keyValue.Key] = keyValue.Value;
             }
         }
 
