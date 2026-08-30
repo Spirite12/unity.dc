@@ -144,13 +144,66 @@ def build_command(
 
 
 def validate_localize_root(project_path: Path) -> None:
-    """在执行本地化资源生成前做目录检查。"""
+    """在执行本地化资源生成前检查资源类型与语言目录。"""
     localize_root = project_path / "Assets" / "Game" / "Localize"
-    if not localize_root.exists():
+    if not localize_root.is_dir():
         raise FileNotFoundError(
             f"本地化资源目录不存在：{localize_root}。"
-            "请先创建目录结构，再执行 localize 任务。"
+            "请先完成含本地化字段或文本表的导表，"
+            "或由开发者准备资源类型与语言目录后，再执行 localize 任务。"
         )
+
+    for table_folder in localize_root.iterdir():
+        if not table_folder.is_dir() or table_folder.name == "Text":
+            continue
+        if any(
+            lang_folder.is_dir() and lang_folder.name != "Table"
+            for lang_folder in table_folder.iterdir()
+        ):
+            return
+
+    raise FileNotFoundError(
+        f"未找到资源本地化的资源类型与语言目录：{localize_root}。"
+        "仅有 Text 目录时请使用 init-localize 或 table 任务。"
+    )
+
+
+def has_batch_entry(project_path: Path, method_name: str) -> bool:
+    """确认项目源码中存在指定的 Unity 批处理静态入口。"""
+    class_name, entry_name = method_name.rsplit(".", maxsplit=1)
+    class_pattern = re.compile(rf"\bclass\s+{re.escape(class_name)}\b")
+    method_pattern = re.compile(
+        rf"\bpublic\s+static\s+(?:async\s+)?[\w<>,.?\[\]]+\s+{re.escape(entry_name)}\s*\("
+    )
+    assets_path = project_path / "Assets"
+    if not assets_path.is_dir():
+        return False
+
+    for source_file in assets_path.rglob("*.cs"):
+        if any(part.lower() == "plugins" for part in source_file.parts):
+            continue
+        source_text = source_file.read_text(encoding="utf-8")
+        if class_pattern.search(source_text) and method_pattern.search(source_text):
+            return True
+    return False
+
+
+def validate_batch_entries(project_path: Path, task_names: tuple[str, ...]) -> None:
+    """在启动 Unity 前验证任务所需的批处理适配器。"""
+    missing_methods = [
+        TASK_METHODS[task_name]
+        for task_name in task_names
+        if not has_batch_entry(project_path, TASK_METHODS[task_name])
+    ]
+    if not missing_methods:
+        return
+
+    methods = "、".join(missing_methods)
+    raise RuntimeError(
+        f"项目源码中未找到批处理入口：{methods}。"
+        "当前不能通过 run_unity_task.py 执行生成任务；"
+        "请由开发者在 Unity Editor 的既有工具入口执行，或先补齐 CodexBatchVerify 适配器。"
+    )
 
 
 def run_task(
@@ -185,16 +238,20 @@ def main() -> int:
         print(f"项目目录不存在：{project_path}", file=sys.stderr)
         return 2
 
+    if args.task == "all":
+        tasks = ("table", "localize")
+    else:
+        tasks = (args.task,)
+
     try:
+        validate_batch_entries(project_path, tasks)
+        if "localize" in tasks:
+            validate_localize_root(project_path)
         unity_path = resolve_unity_path(project_path, args.unity_path)
     except Exception as exc:  # noqa: BLE001
         print(str(exc), file=sys.stderr)
         return 2
 
-    if args.task == "all":
-        tasks = ("table", "localize")
-    else:
-        tasks = (args.task,)
     for task_name in tasks:
         try:
             exit_code = run_task(

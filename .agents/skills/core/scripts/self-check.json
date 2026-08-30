@@ -40,18 +40,25 @@
         "Assets/Docs/**",
         "Assets/Game",
         "Assets/Game/**",
+        "Packages",
+        "Packages/**",
+        "ProjectSettings",
+        "ProjectSettings/**",
+        "Tools/HotUpdate",
+        "Tools/HotUpdate/**",
         "Assets/Game/Scenes/**",
         "Assets/Game/Scripts/Event/**",
         "Assets/Game/Scripts/Main/**",
         "Assets/Game/Scripts/RedTip/**",
         "Assets/Plugins",
-        "Assets/Plugins/**"
+        "Assets/Plugins/**",
+        ".agents/skills/core/references/project-map.md"
       ],
       "documents": [
         ".agents/skills/core/references/project-map.md"
       ],
       "checks": [
-        "确认顶层目录、读写边界、业务入口与框架入口仍能从文档中正确定位。",
+        "确认顶层目录、读写边界、业务入口与框架入口仍能从文档中正确定位，且 DCFrame 子模块边界说明仍与实际一致。",
         "确认新增或变更的入口路径没有遗漏到 project-map 文档。"
       ]
     },
@@ -63,15 +70,20 @@
         "Assets/DCFrame/**",
         "Assets/Game/Scripts/Event/**",
         "Assets/Game/Scripts/RedTip/**",
+        "Assets/Game/Scripts/Main/**",
+        "Assets/Game/Scripts/Cache/**",
         "Assets/Plugins/UniTask",
         "Assets/Plugins/UniTask/**",
-        "Assets/Game/Settings/**"
+        "Assets/Game/Settings/**",
+        "Assets/DCFrame/Editor/Modules/Addressable/**",
+        "Tools/HotUpdate/**",
+        ".agents/skills/core/references/framework.md"
       ],
       "documents": [
         ".agents/skills/core/references/framework.md"
       ],
       "checks": [
-        "确认框架高频模块、主入口脚本和使用边界仍与实际目录一致。",
+        "确认框架高频模块、主入口脚本、热更链路和使用边界仍与实际目录一致。",
         "确认框架层变更是否需要同步更新业务开发侧的使用提示。"
       ]
     },
@@ -84,7 +96,9 @@
         "Assets/Game/Scripts/Table/**",
         "Assets/DCFrame/Modules/Table/**",
         "Assets/DCFrame/Editor/Modules/Table/**",
-        ".agents/skills/core/scripts/run_unity_task.py"
+        "Assets/DCFrame/Editor/Foundation/CodexBatchVerify.cs",
+        ".agents/skills/core/scripts/run_unity_task.py",
+        ".agents/skills/core/references/table.md"
       ],
       "documents": [
         ".agents/skills/core/references/table.md",
@@ -92,7 +106,7 @@
       ],
       "checks": [
         "确认表目录、TableRules 入口、导表命令和生成结果目录仍然正确。",
-        "确认导表相关自动化命令、前置条件与回退方案没有过期。"
+        "确认导表相关自动化命令、批处理适配器前置条件、删除边界与回退方案没有过期。"
       ]
     },
     {
@@ -104,14 +118,16 @@
         "Assets/Game/Settings/Localize/**",
         "Assets/DCFrame/Modules/Localize/**",
         "Assets/DCFrame/Editor/Modules/Localize/**",
-        ".agents/skills/core/scripts/run_unity_task.py"
+        "Assets/DCFrame/Editor/Foundation/CodexBatchVerify.cs",
+        ".agents/skills/core/scripts/run_unity_task.py",
+        ".agents/skills/core/references/localization.md"
       ],
       "documents": [
         ".agents/skills/core/references/localization.md",
         ".agents/skills/core/SKILL.md"
       ],
       "checks": [
-        "确认 Localize 目录、LocalizeRules 入口、初始化顺序与脚本命令仍然正确。",
+        "确认 Localize 目录、LocalizeRules 入口、文本/资源的初始化前置条件、批处理适配器与脚本命令仍然正确。",
         "确认本地化资源生成的自动化边界与开发者手工步骤没有过期。"
       ]
     },
@@ -132,7 +148,8 @@
         "Assets/DCFrame/Modules/Event/**",
         "Assets/DCFrame/Modules/Cache/**",
         "Assets/DCFrame/Modules/TextFilter/**",
-        "Assets/DCFrame/Modules/Addressable/**"
+        "Assets/DCFrame/Modules/Addressable/**",
+        ".agents/skills/core/references/ui.md"
       ],
       "documents": [
         ".agents/skills/core/references/ui.md"

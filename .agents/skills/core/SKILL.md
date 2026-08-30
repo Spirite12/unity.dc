@@ -9,14 +9,16 @@ description: 用于阅读工程结构、编写和完善代码，以及在功能�
 
 ## 使用顺序
 
-1. 先读当前文档，确认 `core` 的入口导航、索引与专题边界。
-2. 再读 `references` 下“工程目录与模块入口”专题文档。
-3. 根据任务涉及的模块，阅读对应的 `references` 专题文档。
+1. 先读仓库根目录 `AGENTS.md`，确认本次任务的读写边界、完成定义与项目级协作规则。
+2. 检查工作区状态、子模块状态和任务范围；除非用户明确要求，不把 `Library/`、`Logs/`、`obj/`、IDE 缓存等可再生文件当作工程源码审查对象。
+3. 再读当前文档，确认 `core` 的入口导航、索引与专题边界。
+4. 读取 `references/project-map.md`，根据任务涉及的模块继续读取对应专题文档。
 
 ## 当前职责
 
 - `core` 负责工程入口导航、专题文档索引、模块边界说明与 `core` 自身的自检配置。
 - 仓库级通用规则与完成定义不在本 Skill 内重复维护；PR 前 Core 检查流程由根目录 `AGENTS.md` 约束，通用 GitHub 操作由系统级 `github-workflow` Skill 执行。
+- `Assets/DCFrame/` 是 Git 子模块；业务任务默认不修改其源码。涉及框架事实时，应同时报告父仓库记录的提交与当前子模块提交是否一致。
 
 ## 业务开发约束
 
@@ -33,8 +35,10 @@ description: 用于阅读工程结构、编写和完善代码，以及在功能�
 ## scripts 索引
 
 - Unity 自动化入口：`scripts/run_unity_task.py`
-  - 用途：通过 Unity 命令行执行导表与本地化资源生成，并可按 `LocalizeRules` 上的“本地化表生成”“本地化资源生成”按钮顺序执行初始化。
-  - 使用提示：涉及 `TableEditor.PackageConfig()`、`LocalizeEditor.CreateLocalizeAsset()` 或首次初始化 Localize 流程时，优先调用该脚本；
+  - 用途：通过 Unity 命令行调用项目提供的 `CodexBatchVerify` 批处理适配器，执行导表、本地化资源生成或其初始化顺序。
+  - 适配器位置：`Assets/DCFrame/Editor/Foundation/CodexBatchVerify.cs`；该文件位于 DCFrame 子模块，修改后需同步核对子模块提交与父仓库指针。
+  - 前置条件：项目必须实现脚本映射的静态入口；脚本会先扫描并验证该适配器，缺失时不得启动 Unity，也不得把未执行的生成步骤报告为已完成。
+  - 使用提示：适配器存在时，涉及 `TableEditor.PackageConfig()`、`LocalizeEditor.CreateLocalizeAsset()` 或首次 Localize 初始化可优先调用该脚本；适配器缺失时，由开发者在 Unity Editor 的既有工具入口执行，或先补齐适配器。
 
 ## references 索引
 

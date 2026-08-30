@@ -14,11 +14,11 @@
   - 目录：`Assets/DCFrame/Modules/Addressable/`
   - 配置：`Assets/Game/Settings/Addressables/AARules.asset`
   - 用途：Addressable 分组规则、自动标记、AA 打包。
-  - 使用提示：涉及资源分组、地址标记或打包规则时，优先先看对应配置资产。
+  - 使用提示：涉及资源分组、地址标记或打包规则时，优先先看对应配置资产；热更还要核对 `AAHotUpdateSettings.json`、Catalog 更新链路和上传工具配置。
 - `Cache`
   - 目录：`Assets/DCFrame/Modules/Cache/`
   - 用途：本地缓存读写、版本控制、按账号类型保存。
-  - 使用提示：涉及本地持久化或账号维度缓存时，优先沿现有缓存基类扩展。
+  - 使用提示：涉及本地持久化或账号维度缓存时，优先沿现有缓存基类扩展；先确认 `Assets/Game/Scripts/Cache/CacheInit.cs` 已返回真实玩家、区服和账号标识。
 - `Event`
   - 目录：`Assets/DCFrame/Modules/Event/`
   - 项目自定义事件入口：`Assets/Game/Scripts/Event/EventConst.cs`
@@ -77,6 +77,12 @@
 - `Assets/DCFrame/Main/MainFrame.cs`：框架主入口脚本。
 - 负责承接框架级生命周期管理与核心能力接入。
 - 涉及框架初始化、运行时调度或统一清理时，优先从该脚本确认入口。
+
+## 运行时启动与热更新
+
+- 主场景 `Assets/Game/Scenes/Main.unity` 的 `MainRoot` 同时挂载 `MainFrame` 与 `MainGame`：前者初始化 GC、屏蔽词、UI 与缓存基础设施，后者注册项目侧红点和缓存标识，并在启动后加载音频控制器。
+- 新增启动异步流程时，必须明确与上述初始化的先后关系；不要仅依赖同一 GameObject 上 `Awake` 的隐式调用顺序。
+- `HotUpdateBootstrapTest` 是独立测试辅助脚本，不应因文件存在就被视为生产启动链路。接入正式热更前，应明确 Catalog 更新、启动资源下载、失败回退和用户提示的责任边界。
 
 ## 高频工具目录
 

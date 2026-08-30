@@ -9,7 +9,7 @@
 
 - `Assets/Game/Settings/Localize/`：本地化系统配置入口与编辑器工具入口。
 - `Assets/DCFrame/Modules/Localize/`：框架本地化运行时入口与规则目录。
-- `Assets/Game/Localize/`：本地化资源根目录，文本与资源本地化均从这里组织；首次接入时，初始化流程以 `LocalizeRules` 上的“本地化表生成”“本地化资源生成”为准，可通过 `scripts/run_unity_task.py init-localize` 顺序执行；若该流程执行后仍未生成目录或资源，视为环境或工程状态问题，应停止继续自动化处理并反馈开发者。
+- `Assets/Game/Localize/`：本地化资源根目录，文本与资源本地化均从这里组织；模板工程初始可不存在。含本地化字段或文本表的导表会创建文本表结构；资源本地化则需由开发者先准备资源类型和语言目录，不能仅靠新建空目录绕过生成器校验。
 - 编辑器入口：
   - `Tools/资源项/本地化资源生成`
   - `CONTEXT/Text/Add Localize`
@@ -58,13 +58,15 @@
 
 1. 先从策划案中拆出用户可见文案，以及需要随语言切换的资源。
 2. 判断文案应落到默认表、枚举表还是文本表；不要直接在代码或预制体里长期写死文案。
-3. 当任务涉及本地化文本时，必须调用 `scripts/run_unity_task.py init-localize`，按 `LocalizeRules` 上“本地化表生成”“本地化资源生成”的顺序执行；禁止通过手工创建目录，若脚本因 Unity 占用或环境问题失败，必须停止并反馈开发者。
-4. 若涉及资源本地化，先确认资源类型目录是否已建立，并检查其下是否已有 `Table/` 与语言目录。
-5. 资源本地化文件需先由开发者放入对应语言目录；若需要占位资源，需先确认当前需求是否允许补建占位文件。
-6. 完成 `table` 与本地化规则配置后，再通过现有入口生成本地化数据与资源映射；优先调用 `scripts/run_unity_task.py localize` 执行资源生成；若脚本不可用，再回退到 Unity Editor 内的 `LocalizeEditor.CreateLocalizeAsset()` 入口。
-7. 文本通过 `Localize.GetText(...)` 接入，资源通过 `Localize.LoadAsset<T>(key)` 接入。
-8. 预制体上的多语言组件挂接、引用绑定与最终表现校验由开发者手动处理；AI 负责前后配置、命名约定与代码接入。
-9. 若发现新增本地化地区时，需同时检查文本目录与各资源类型目录下是否已有对应语言文件；若缺失，则按现有目录结构补齐对应语言文件或占位文件。
+3. 自动化前先确认项目实现了 `CodexBatchVerify.RunInitLocalize` 或对应单任务入口；入口存在时才可调用 `scripts/run_unity_task.py init-localize`，按 `LocalizeRules` 上“本地化表生成”“本地化资源生成”的顺序执行。入口缺失时，停止自动化并报告开发者，由开发者在 Unity Editor 中执行既有按钮，或先补齐适配器。
+4. 仅涉及文本时，先完成含本地化字段或文本表的导表，再检查 `Assets/Game/Localize/Text/` 是否由 Unity Localization 生成；无本地化表规则时，根目录未生成属于正常结果。
+5. 若涉及资源本地化，由开发者先准备资源类型目录、`Table/` 和语言目录；AI 不应为了通过目录检查而补建没有资源或命名依据的空目录。
+6. 资源本地化文件需先由开发者放入对应语言目录；若需要占位资源，需先确认当前需求是否允许补建占位文件。
+7. 完成 `table` 与本地化规则配置后，确认项目具备 `CodexBatchVerify.RunLocalizeCreateAsset` 时再调用 `scripts/run_unity_task.py localize`；否则由开发者通过 Unity Editor 的 `LocalizeEditor.CreateLocalizeAsset()` 入口执行。首次资源生成应先用小范围样例核对生成位置和表条目，再处理完整资源树。
+   - `scripts/run_unity_task.py localize` 会在执行前校验根目录下至少存在一个非 `Text` 的资源类型目录及语言目录；仅有空目录或文本目录时应先补齐资源范围，或改用 `init-localize`。
+8. 文本通过 `Localize.GetText(...)` 接入，资源通过 `Localize.LoadAsset<T>(key)` 接入。
+9. 预制体上的多语言组件挂接、引用绑定与最终表现校验由开发者手动处理；AI 负责前后配置、命名约定与代码接入。
+10. 若发现新增本地化地区时，需同时检查文本目录与各资源类型目录下是否已有对应语言文件；若缺失，应由开发者按现有目录结构补齐对应语言文件或经确认的占位文件。
 
 ## 完成定义
 
